@@ -1,0 +1,6 @@
+module AbloyCuBeMobileSDK {
+    header "AbloyCuBeMobileSDK.h"
+    export *
+    
+    requires swift
+}

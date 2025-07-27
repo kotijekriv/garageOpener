@@ -1,0 +1,58 @@
+PODS:
+  - AbloyCuBeMobileSDK-Debug (2.0.1):
+    - AnyCodable-FlightSchool (~> 0.6)
+    - CBORCoding (~> 1.4.0)
+    - DatadogCore (~> 2.29.0)
+    - DatadogLogs (~> 2.29.0)
+    - Mixpanel (~> 5.0.0)
+  - AbloyCuBeMobileSDK-Release (2.0.1):
+    - AnyCodable-FlightSchool (~> 0.6)
+    - CBORCoding (~> 1.4.0)
+    - DatadogCore (~> 2.29.0)
+    - DatadogLogs (~> 2.29.0)
+    - Mixpanel (~> 5.0.0)
+  - AnyCodable-FlightSchool (0.6.7)
+  - CBORCoding (1.4.0):
+    - Half (~> 1.4)
+  - DatadogCore (2.29.0):
+    - DatadogInternal (= 2.29.0)
+  - DatadogInternal (2.29.0)
+  - DatadogLogs (2.29.0):
+    - DatadogInternal (= 2.29.0)
+  - Half (1.4.2)
+  - Mixpanel (5.0.8)
+
+DEPENDENCIES:
+  - AbloyCuBeMobileSDK-Debug (from `../abloy-mobile-sdk-ios-2.0.1`)
+  - AbloyCuBeMobileSDK-Release (from `../abloy-mobile-sdk-ios-2.0.1`)
+
+SPEC REPOS:
+  trunk:
+    - AnyCodable-FlightSchool
+    - CBORCoding
+    - DatadogCore
+    - DatadogInternal
+    - DatadogLogs
+    - Half
+    - Mixpanel
+
+EXTERNAL SOURCES:
+  AbloyCuBeMobileSDK-Debug:
+    :path: "../abloy-mobile-sdk-ios-2.0.1"
+  AbloyCuBeMobileSDK-Release:
+    :path: "../abloy-mobile-sdk-ios-2.0.1"
+
+SPEC CHECKSUMS:
+  AbloyCuBeMobileSDK-Debug: cf12ec78bd75ea1b0235dcb466743e5268192a8e
+  AbloyCuBeMobileSDK-Release: 50e9fdf4f8a342bfc9a6414b8d1b906e692926e5
+  AnyCodable-FlightSchool: 261cbe76757802b17d471b9059b21e6fa5edf57b
+  CBORCoding: ce4f4dd501db2e7b26697b2eb0f3e6535ca109a1
+  DatadogCore: 919080d4ba0bf172f42e8cf49a6ea33a79bdeb9a
+  DatadogInternal: f98c60cc5b44db688692e2b560ea273182cde022
+  DatadogLogs: c314b15a97bfc7e0728ea253d3638b0513032d88
+  Half: f63c2cbdb8a8d9f5064edcf43057148d75f4b750
+  Mixpanel: 9337782610693ef36b8f6ab531493201825f1dd6
+
+PODFILE CHECKSUM: 099ed7373b648ad04165fb6d85e3e9aca3142df7
+
+COCOAPODS: 1.16.2

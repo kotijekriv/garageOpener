@@ -1,0 +1,57 @@
+# Xcode
+.DS_Store
+*.xcodeproj
+*.xcworkspace
+
+# Build products
+Build/
+build/
+DerivedData/
+
+# Swift Package Manager (SPM)
+.build/
+Package.resolved
+
+# Cocoapods
+Pods/
+!Pods/.gitkeep # Keep Pods folder empty if you want to track it
+*.xcworkspace # For Cocoapods workspaces
+
+# Carthage
+Carthage/
+
+# User-specific files
+*.xcuserdatad/
+xcuserdata/
+
+# Swift Playgrounds
+*.playground/timeline
+*.playground/
+!*.playground/Contents.swift # To include your Swift Playground code
+
+# Crashlytics
+com.crashlytics.mac
+
+# Fastlane
+fastlane/report.xml
+fastlane/screenshots/
+fastlane/test_output/
+
+# Danger
+.danger/
+
+# Generated files
+*.gcno
+*.d
+*.o
+
+# Other
+.AppleDouble
+.LSOverride
+
+# For simulators
+*.app
+*.ipa
+
+# Project-specific files that may change per user
+GarageOpenerDemo.xcworkspace/xcuserdata/
