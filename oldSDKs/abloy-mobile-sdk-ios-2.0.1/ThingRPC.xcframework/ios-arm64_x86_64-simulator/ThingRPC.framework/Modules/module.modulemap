@@ -1,0 +1,11 @@
+framework module ThingRPC {
+  umbrella header "ThingRPC-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module ThingRPC.Swift {
+  header "ThingRPC-Swift.h"
+  requires objc
+}

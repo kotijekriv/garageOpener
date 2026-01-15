@@ -1,0 +1,8 @@
+Continuing here, I created environment for you and to get access for this you can find the credentials/keys in the attachment.
+
+There is also the API key (Ratelimiting) that must be provided with every API request in the x-api-key header, otherwise the request will be rejected
+
+
+Here you can find the documentations fastly:
+https://api-docs.keyless.assaabloy.com/integration/v2/index.html
+https://api-docs.keyless.assaabloy.com/administration/v2/index.html

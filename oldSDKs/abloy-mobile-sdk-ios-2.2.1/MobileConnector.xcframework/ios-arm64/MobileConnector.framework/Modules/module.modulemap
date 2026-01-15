@@ -1,0 +1,11 @@
+framework module MobileConnector {
+  umbrella header "MobileConnector-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module MobileConnector.Swift {
+  header "MobileConnector-Swift.h"
+  requires objc
+}

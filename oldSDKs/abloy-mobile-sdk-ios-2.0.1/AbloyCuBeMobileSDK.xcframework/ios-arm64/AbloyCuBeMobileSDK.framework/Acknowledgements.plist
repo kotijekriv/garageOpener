@@ -1,0 +1,577 @@
+bplist00—Uspecs≠ +5FJNV`hr|Ÿ	
+Wauthors[descriptionXhomepage[licenseText[licenseTypeTname^socialMediaURLWsummaryWversion—ZIan Leitch]ian@leitch.ioP_)https://github.com/peripheryapp/periphery_Copyright 2019 Ian Leitch
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+SMITYPeriphery_1A tool to identify unused code in Swift projects.V2.21.2Ÿ	
+—YJP Simard\jp@jpsim.com_"https://github.com/realm/SwiftLint_FThe MIT License (MIT)
+
+Copyright (c) 2025 The SwiftLint Contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+YSwiftLint_.A tool to enforce Swift style and conventions.V0.59.1Ÿ	
+!$%&'()*—"#UMattt_mattt@flight.school_]<p>This functionality is discussed in Chapter 3 of Flight School Guide to Swift Codable.</p>
+_$https://flight.school/books/codable/_(Copyright 2018 Read Evaluate Press, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+_AnyCodable-FlightSchool_https://twitter.com/mattt_BType-erased wrappers for Encodable, Decodable, and Codable values.U0.6.7Ÿ	
+,/01234—-.ZJoe Newton_somerandomiosdev@gmail.com_ª<p>A lightweight framework containing a coder pair for encoding and decoding <code>Codable</code> conforming types to and from CBOR document format for iOS, macOS, tvOS, and watchOS.</p>
+_.https://github.com/SomeRandomiOSDev/CBORCoding_;Copyright (c) 2021 Joe Newton <somerandomiosdev@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+ZCBORCoding_A CBOR Encoder and DecoderU1.4.0Ÿ	
+6?@ABCDE‘789:;<=>]Ganesh Jangir\Maciej Burda_Maciek Grzybowski\Maxime Epain_ganesh.jangir@datadoghq.com_maciej.burda@datadoghq.com_maciek.grzybowski@datadoghq.com_maxime.epain@datadoghq.com_https://www.datadoghq.com_,O                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright 2017 Datadog, Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+VApache[DatadogCore_https://twitter.com/datadoghq_#Official Datadog Swift SDK for iOS.V2.29.0Ÿ	
+G?@AHCIE‘789:;<=>_DatadogInternal_<Datadog Internal Package. This module is not for public use.Ÿ	
+K?@ALCME‘789:;<=>[DatadogLogs_Datadog Logs Module.Ÿ	
+OPQRSTU—-._ç<p>A lightweight framework containing a Swift implementation for a half-precision floating point type for iOS, macOS, tvOS, and watchOS.</p>
+_(https://github.com/SomeRandomiOSDev/Half_;Copyright (c) 2023 Joe Newton <somerandomiosdev@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+THalf_#Swift Half-Precision Floating PointU1.4.2Ÿ	
+WZ[\]^_—XY]Mixpanel, Inc_support@mixpanel.com_https://mixpanel.com_'ﬁCopyright 2022 Mixpanel, Inc.
+
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        https://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+_Apache License, Version 2.0XMixpanel_.iPhone tracking library for Mixpanel AnalyticsU5.0.8Ÿ	
+acdefg—b_OpenAPI Generator_1https://github.com/OpenAPITools/openapi-generator[Proprietary_MobileConnector_MobileConnector Swift SDKV1.19.0Ÿ	
+ilmnopq—jk_ASSA ABLOY Mobile Services_mobilekeys@assaabloy.com_http://www.assaabloy.com/seos_HCopyright (c) 2014-2023 ASSA ABLOY. Version 9.0.4. All rights reserved.
+YCopyright_SeosMobileKeysSDK-Debug_!Open readers with your iOS deviceU9.0.4Ÿ	
+svwxyz{—tu_Thing RPC Core Team_)ASSA_ABLOY_AB-ST-AADCP_team@assaabloy.com_{<p>This library is intended to be used by all ASSA ABLOY company teams who needs ThingRCP core functionality in Swift.</p>
+_dhttps://sourcery.assaabloy.net/assa-abloy-device-configuration-protocol/repositories/thing-rpc-swifto5‡ - - - 
+ t i t l e :   " I n n e r   S o u r c e   L i c e n s e " 
+ t e a s e r :   " L i c e n s e   f o r   c o n t r i b u t i o n   a n d   u s a g e   o f   s h a r e d   s o f t w a r e   c o d e " 
+ p a t h :   " / l i c e n s e " 
+ h e a d e r I m a g e :   " h a n d s R i g h t . p n g " 
+ l o g o :   " l o g o W i t h Q u o t e . p n g " 
+ - - - 
+ 
+ #   I n n e r   S o u r c e   S o f t w a r e   L i c e n s e   A g r e e m e n t 
+ 
+ _ & c o p y ;   2 0 2 1   A S S A   A B L O Y   A B _ 
+ 
+ S o u r c e r y   i s   a   p l a t f o r m   a n d   i n i t i a t i v e   t o   f a c i l i t a t e   c o l l a b o r a t i o n   b e t w e e n   d e v e l o p m e n t   c e n t e r s   w i t h i n   A S S A   A B L O Y .   T h e   p l a t f o r m   e n a b l e s   s h a r i n g   s o u r c e   c o d e   i n   a n   i n t e r n a l   o p e n   s o u r c e   m a n n e r   k n o w n   a s   i n n e r   s o u r c i n g  .   T h e   p l a t f o r m   i s   u s e d   b y   f o r   a n   e x a m p l e   A S S A   A B L O Y s   m o d u l a r   p l a t f o r m s   f o r   e m b e d d e d   -   M B S   a n d   s o f t w a r e   -   M S F   d e v e l o p m e n t .   H o w e v e r   t h e   p l a t f o r m   c a n   b e   u s e d   f o r   a n y   i n i t i a t i v e   w i t h i n   A S S A   A B L O Y   w h e r e   t e a m s   w a n t   t o   c o l l a b o r a t e   o u t s i d e   n o r m a l   t e a m   s t r u c t u r e .   T h e   p l a t f o r m   i s   n o t   i n t e n d e d   t o   b e   a   r e p l a c e m e n t   t o   e x i s t i n g   t o o l s . 
+ 
+ P l e a s e   r e a d   t h e   f o l l o w i n g   I n n e r   S o u r c e   S o f t w a r e   L i c e n s e   A g r e e m e n t   (  A g r e e m e n t  )   c a r e f u l l y   a n d   i n   i t s   e n t i r e t y . 
+ A n y   u s e ,   r e p r o d u c t i o n ,   i n s t a l l a t i o n   o r   d o w n l o a d i n g   o f   t h e   P r o g r a m   ( a s   d e f i n e d   b e l o w )   c o n s t i t u t e s   a c c e p t a n c e   o f   t h i s   A g r e e m e n t   b y   R e c i p i e n t   ( a s   d e f i n e d   b e l o w ) . 
+ 
+ # #   S e c t i o n   1 .   D e f i n i t i o n s 
+ 
+ * * 1 . 1 * *    A f f i l i a t e    m e a n s   a n y   l e g a l   e n t i t y   w h i c h   i s   d i r e c t l y   o r   i n d i r e c t l y   c o n t r o l l i n g ,   c o n t r o l l e d   b y   o r   u n d e r   c o m m o n   c o n t r o l   w i t h   A S S A   A B L O Y   A B .   F o r   p u r p o s e s   o f   t h i s   d e f i n i t i o n   " c o n t r o l "   s h a l l   m e a n   o w n e r s h i p   o r   c o n t r o l ,   e i t h e r   d i r e c t l y   o r   i n d i r e c t l y ,   o f   m o r e   t h a n   f i f t y   ( 5 0 )   %   o f   t h e   v o t i n g   r i g h t s   o f   s u c h   e n t i t y .     
+ 
+ * * 1 . 2 * *    A g r e e m e n t    m e a n s   t h i s   I n n e r   S o u r c e   S o f t w a r e   L i c e n s e   A g r e e m e n t   a s   a m e n d e d   f r o m   t i m e   t o   t i m e .     
+ 
+ * * 1 . 3 * *    A S S A   A B L O Y   G r o u p    m e a n s   A S S A   A B L O Y   A B   i n c l u d i n g   a l l   i t s   c u r r e n t   A f f i l i a t e s .     
+ 
+ * * 1 . 4 * *    C o n t r i b u t i o n    m e a n s :     
+ -   * * i ) * *   c h a n g e s   t o   t h e   P r o g r a m ,   a n d     
+ -   * * i i ) * *   a d d i t i o n s   t o   t h e   P r o g r a m ;     
+ 
+ w h e r e   s u c h   c h a n g e s   a n d / o r   a d d i t i o n s   t o   t h e   P r o g r a m   o r i g i n a t e   f r o m   a n d   a r e   p r o v i d e d   b y   t h a t   C o n t r i b u t o r .   A   C o n t r i b u t i o n    o r i g i n a t e s    f r o m   a   C o n t r i b u t o r   i f   i t   w a s   a d d e d   t o   t h e   P r o g r a m   b y   s u c h   C o n t r i b u t o r   i t s e l f   o r   a n y o n e   a c t i n g   o n   b e h a l f   o f   s u c h   C o n t r i b u t o r .   C o n t r i b u t i o n s   d o   n o t   i n c l u d e   a d d i t i o n s   t o   t h e   P r o g r a m   w h i c h :   ( i )   a r e   s e p a r a t e   m o d u l e s   o f   s o f t w a r e   o r   p a r t s   t h e r e o f   d i s t r i b u t e d   i n   c o n j u n c t i o n   w i t h   t h e   P r o g r a m   u n d e r   t h e i r   o w n   l i c e n s e   a g r e e m e n t   f o r   e x a m p l e   u n d e r   O p e n   S o u r c e   L i c e n s i n g   T e r m s ,   a n d   ( i i )   a r e   n o t   d e r i v a t i v e   w o r k s   o f   t h e   P r o g r a m .   
+ 
+ * * 1 . 5 * *    C o n t r i b u t o r    m e a n s   a n y   A f f i l i a t e   t h a t   m a d e   a   C o n t r i b u t i o n .     
+ 
+ * * 1 . 6 * *    I n t e l l e c t u a l   P r o p e r t y   R i g h t s    m e a n s   a n y   a n d   a l l   r i g h t s   u n d e r   a n y   s t a t u e ,   c o m m o n   l a w   o r   e q u i t y   i n   a n d   u n d e r   c o p y r i g h t s ,   t r a d e   s e c r e t s ,   a n d   p a t e n t s   ( i n c l u d i n g   u t i l i t y   m o d e l s ) ,   a n d   a n a l o g o u s   r i g h t s   t h r o u g h o u t   t h e   w o r l d ,   i n c l u d i n g   a n y   a p p l i c a t i o n s ,   d i v i s i o n a l s ,   c o n t i n u a t i o n s   ( i n c l u d i n g   c o n t i n u a t i o n s - i n - p a r t )   f o r   a n d   t h e   r i g h t   t o   a p p l y   f o r ,   a n y   o f   t h e   f o r e g o i n g .     
+ 
+ * * 1 . 7 * *    L a r g e r   W o r k    m e a n s   a   w o r k   t h a t   c o m b i n e s   t h e   P r o g r a m   w i t h   c o d e   n o t   g o v e r n e d   b y   t h i s   A g r e e m e n t   [ o r   O p e n   S o u r c e   L i c e n s i n g   T e r m s ] .     
+ 
+ * * 1 . 8 * *    O p e n   S o u r c e   L i c e n s i n g   T e r m s    m e a n s   t e r m s   i n   a n y   l i c e n s e   f o r   s o f t w a r e   w h i c h   r e q u i r e ,   a s   a   c o n d i t i o n   o f   u s e ,   m o d i f i c a t i o n   a n d / o r   d i s t r i b u t i o n   o f   s u c h   s o f t w a r e   o r   o t h e r   s o f t w a r e   i n c o r p o r a t e d   i n t o ,   d e r i v e d   f r o m   o r   d i s t r i b u t e d   w i t h   s u c h   s o f t w a r e   ( a    W o r k  ) ,   a n y   o f   t h e   f o l l o w i n g :   ( a )   t h e   m a k i n g   a v a i l a b l e   o f   s o u r c e   c o d e   o r   d e s i g n   i n f o r m a t i o n   r e g a r d i n g   t h e   W o r k ;   ( b )   t h e   g r a n t i n g   o f   p e r m i s s i o n   f o r   c r e a t i n g   d e r i v a t i v e   w o r k s   r e g a r d i n g   t h e   W o r k ;   o r   ( c )   t h e   g r a n t i n g   o f   a   l i c e n s e   t o   a n y   p a r t y   u n d e r   I n t e l l e c t u a l   P r o p e r t y   R i g h t s   r e g a r d i n g   t h e   W o r k .   B y   m e a n s   o f   e x a m p l e   a n d   w i t h o u t   l i m i t a t i o n ,   O p e n   S o u r c e   L i c e n s i n g   T e r m s   i n c l u d e   t h e   f o l l o w i n g   l i c e n s e s   o r   d i s t r i b u t i o n   m o d e l s :     ( i )   t h e   G N U   G e n e r a l   P u b l i c   L i c e n s e   ( G P L )   o r   L e s s e r / L i b r a r y   G P L   ( L G P L ) ,   ( i i )   t h e   A r t i s t i c   L i c e n s e   ( e . g .   P E R L ) ,   ( i i i )   t h e   M o z i l l a   P u b l i c   L i c e n s e ,   ( i v )   t h e   C o m m o n   P u b l i c   L i c e n s e ,   ( v )   t h e   S u n   C o m m u n i t y   S o u r c e   L i c e n s e   ( S C S L ) ,   ( v i )   t h e   S u n   I n d u s t r y   S t a n d a r d s   S o u r c e   L i c e n s e   ( S I S S L ) ,   ( v i i )   t h e   O p e n   S o f t w a r e   L i c e n s e ,   ( v i i i )   M I T   o r   X - L i c e n s e ,   ( i x )   B S D   L i c e n s e   a n d   ( x )   A p a c h e   L i c e n s e .     
+ 
+ * * 1 . 9 * *    P r o g r a m    m e a n s   a l l   t h e   C o n t r i b u t i o n s   d i s t r i b u t e d   u n d e r   t h i s   A g r e e m e n t .     
+ 
+ * * 1 . 1 0 * *    R e c i p i e n t    m e a n s   a n   A f f i l i a t e   w h o   r e c e i v e s ,   d o w n l o a d s ,   u s e s   o r   r e p r o d u c e s   t h e   P r o g r a m ,   i n c l u d i n g   a l l   C o n t r i b u t o r s .   F o r   t h e   s a k e   o f   c l a r i t y ,   b e i n g   a n   A f f i l i a t e   i s   n o t   s u f f i c i e n t   f o r   b e i n g   a   R e c i p i e n t .     
+ 
+ * * 1 . 1 1 * *    I n n e r   S o u r c i n g    -   I n n e r   s o u r c e   i s   t h e   u s e   o f   o p e n   s o u r c e   s o f t w a r e   d e v e l o p m e n t   b e s t   p r a c t i c e s   a n d   t h e   e s t a b l i s h m e n t   o f   a n   o p e n   s o u r c e - l i k e   c u l t u r e   w i t h i n   o r g a n i z a t i o n s .   T h e   o r g a n i z a t i o n   m a y   s t i l l   d e v e l o p   p r o p r i e t a r y   s o f t w a r e ,   b u t   i n t e r n a l l y   o p e n s   u p   i t s   d e v e l o p m e n t .     
+ 
+ * * 1 . 1 2 * *    S o u r c e r y    m e a n s   t h e   p l a t f o r m   t h a t   e n a b l e   I n n e r   S o u r c i n g   a n d   i n c l u d e   f o r   a n   e x a m p l e   v e r s i o n   c o n t r o l   s y s t e m s ,   w i k i   t o o l s ,   c o n t i n u o u s   i n t e g r a t i o n   e t c .     
+ 
+ # #   S e c t i o n   2 .   L i c e n s e   a n d   R e s t r i c t i o n s 
+ 
+ U n d e r   t h i s   s e c t i o n   r i g h t s   a r e   g r a n t e d   f o r   t h e   d u r a t i o n   o f   t h e   a p p l i c a b l e   c o p y r i g h t   i n   t h e   P r o g r a m   a c c o r d i n g   t o   t h e   a p p l i c a b l e   l a w .     
+ 
+ * * A ) * *   S u b j e c t   t o   t h e   t e r m s   o f   t h i s   A g r e e m e n t ,   e a c h   C o n t r i b u t o r   h e r e b y   g r a n t s   R e c i p i e n t   a   n o n - e x c l u s i v e ,   w o r l d w i d e ,   r o y a l t y - f r e e   c o p y r i g h t   l i c e n s e   t o   u s e ,   c o p y ,   m o d i f y ,   m e r g e ,   r e p r o d u c e   a n d   p r e p a r e   d e r i v a t i v e   w o r k s   o f   t h e   C o n t r i b u t i o n   o f   s u c h   C o n t r i b u t o r   w i t h   t h e   f o l l o w i n g   r e s t r i c t i o n s :     
+ -   * * i ) * *   T h i s   l i c e n s e   d o e s   n o t   i n c l u d e   a n y   l i c e n s e ,   r i g h t ,   p o w e r   o r   a u t h o r i t y   t o   c a u s e   t h e   P r o g r a m ,   i n   w h o l e   o r   i n   p a r t ,   t o   b e   s u b j e c t   t o   O p e n   S o u r c e   L i c e n s i n g   T e r m s .   Y o u   w i l l   n o t   t a k e   o r   f a i l   t o   t a k e   a n y   a c t i o n   t h a t   c o u l d   s u b j e c t   t h e   P r o g r a m ,   i n   w h o l e   o r   i n   p a r t ,   t o   O p e n   S o u r c e   L i c e n s i n g   T e r m s .     
+ -   * * i i ) * *   R e c i p i e n t   i s   h e r e b y   e x p r e s s l y   p r o h i b i t e d   f r o m   d i s t r i b u t i n g ,   l i c e n s i n g ,   s e l l i n g   o r   i n   a n y   o t h e r   w a y   d i s c l o s i n g   t h e   P r o g r a m   o r   p a r t s   t h e r e o f   o r   a n y   m o d i f i c a t i o n s   o r   d e r i v a t i v e   w o r k s   t h e r e o f ,   i n   s o u r c e   c o d e   f o r m a t   ( h u m a n   r e a d a b l e )   t o   a n y   p a r t y   o u t s i d e   t h e   A S S A   A B L O Y   G r o u p .     
+ 
+ * * B ) * *   S u b j e c t   t o   t h e   t e r m s   o f   t h i s   A g r e e m e n t ,   e a c h   C o n t r i b u t o r   h e r e b y   g r a n t s   R e c i p i e n t   a   n o n - e x c l u s i v e ,   w o r l d w i d e ,   r o y a l t y - f r e e   c o p y r i g h t   l i c e n s e   t o   d i s t r i b u t e   t h e   C o n t r i b u t i o n   o f   s u c h   C o n t r i b u t o r   a n d   d e r i v a t i v e   w o r k s   t h e r e o f   t o   a n y   p a r t y   o u t s i d e   t h e   A S S A   A B O L Y   G r o u p   p r o v i d e d   t h a t :     
+ -   * * i ) * *   t h e   P r o g r a m   o r   C o n t r i b u t i o n   i s   p a r t   o f   a   L a r g e r   W o r k   a n d   t h a t   s u c h   L a r g e r   W o r k   i s   s u b j e c t   t o   R e c i p i e n t  s   o w n   l i c e n s i n g   a g r e e m e n t   p r o t e c t i n g   a l l   I n t e l l e c t u a l   P r o p e r t y   R i g h t s   h e l d   b y   t h e   C o n t r i b u t o r s ,   a n d     
+ -   * * i i ) * *   t h e   P r o g r a m   o r   C o n t r i b u t i o n   i s   d i s t r i b u t e d   i n   o b j e c t   c o d e   f o r m a t   o n l y ,   r e g a r d l e s s   o f   w h i c h   f o r m a t   t h e   r e s t   o f   t h e   l a r g e r   w o r k   i s   d i s t r i b u t e d .     
+ 
+ * * C ) * *   E x c e p t   a s   e x p r e s s l y   s t a t e d   i n   S e c t i o n   2   A ) - B )   a b o v e ,   R e c i p i e n t   r e c e i v e s   n o   r i g h t s   o r   l i c e n s e s   i n   o r   t o   t h e   I n t e l l e c t u a l   P r o p e r t y   R i g h t s   i n   a n d   t o   a n y   C o n t r i b u t i o n   o r   a n y   C o n t r i b u t o r   u n d e r   t h i s   A g r e e m e n t ,   w h e t h e r   e x p r e s s l y ,   b y   i m p l i c a t i o n ,   e s t o p p e l   o r   o t h e r w i s e .   A l l   r i g h t s   i n   t h e   P r o g r a m   n o t   e x p r e s s l y   g r a n t e d   u n d e r   t h i s   A g r e e m e n t   a r e   r e s e r v e d   b y   t h e   r e s p e c t i v e   C o n t r i b u t o r .     
+ 
+ * * D ) * *   O p e n   s o u r c e   s o f t w a r e ,   i f   a n y ,   i n c l u d e d   i n   t h e   P r o g r a m   o r   a   C o n t r i b u t i o n   i s   n o t   l i c e n s e d   u n d e r   t h e   t e r m s   o f   t h i s   A g r e e m e n t   b u t   i s   i n s t e a d   l i c e n s e d   u n d e r   t h e   t e r m s   o f   t h e   a p p l i c a b l e   o p e n   s o u r c e   l i c e n s e ( s )   a s   d e c i d e d   b y   t h e   e n t i t y   o r   p e r s o n   r e l e a s i n g   t h e   s o f t w a r e   o p e n   s o u r c e   s o f t w a r e ,   s u c h   a s   t h e   G N U   G P L   a n d   t h e   G N U   L e s s e r   G e n e r a l   P u b l i c   L i c e n s e .   U s e   o f   t h e   o p e n   s o u r c e   s o f t w a r e   i s   s u b j e c t   t o   t h e   t e r m s   o f   s u c h   a p p l i c a b l e   l i c e n s e .   S h o u l d   R e c i p i e n t   n o t   a g r e e   t o   t h e   t e r m s   o f   s u c h   a p p l i c a b l e   l i c e n s e   t h e n   t h e   o p e n   s o u r c e   s o f t w a r e   m u s t   n o t   b e   u s e d .     
+ 
+ * * E ) * *   A l l   R e c i p i e n t s   m u s t   a t   a l l   t i m e s   f o l l o w   a n d   a d h e r e   t o   i t s   a p p l i c a b l e   o p e n   s o u r c e   p o l i c y   ( o r   s i m i l a r   d o c u m e n t ) .     
+ 
+ * * F ) * *   T h i s   A g r e e m e n t   d o e s   n o t   e n t a i l   a n y   c h a r g e s   o r   p a y m e n t s   b e t w e e n   a n y   R e c i p i e n t   o r   C o n t r i b u t o r .   R o y a l t i e s   a n d / o r   o t h e r   c h a r g e s ,   i f   a n y ,   a r e   h a n d l e d   i n   o t h e r   a g r e e m e n t s   i n   t h e   A S S A   A B L O Y   G r o u p ,   i . e . ,   t h e   o n l y   p o t e n t i a l   p a r t i e s   t o   t h i s   A g r e e m e n t .     
+ 
+ * * G ) * *   R e c i p i e n t   u n d e r s t a n d s   a n d   a c c e p t s   t h a t   a l t h o u g h   e a c h   C o n t r i b u t o r   g r a n t s   t h e   l i c e n s e s   t o   i t s   C o n t r i b u t i o n s   a s   s e t   f o r t h   h e r e i n ,   n o   a s s u r a n c e s ,   w a r r a n t i e s ,   i n d e m n i t i e s ,   r e p r e s e n t a t i o n s   o r   t h e   l i k e   a r e   p r o v i d e d   b y   a n y   C o n t r i b u t o r   t h a t   t h e   P r o g r a m   d o e s   n o t   i n f r i n g e   p a t e n t s ,   c o p y r i g h t s   o r   o t h e r   I n t e l l e c t u a l   P r o p e r t y   R i g h t s   o f   a n y   o t h e r   e n t i t y   i n s i d e   o r   o u t s i d e   t h e   A S S A   A B L O Y   G r o u p .   E a c h   C o n t r i b u t o r   h e r e b y   e x p r e s s l y   d i s c l a i m s   a l l   l i a b i l i t y   t o   R e c i p i e n t   f o r   c l a i m s   b r o u g h t   b y   a n y   o t h e r   e n t i t y   b a s e d   o n   i n f r i n g e m e n t   o f   I n t e l l e c t u a l   P r o p e r t y   R i g h t s   o r   o t h e r w i s e .   A s   a   m a t e r i a l   c o n d i t i o n   t o   e x e r c i s i n g   t h e   r i g h t s   a n d   l i c e n s e s   g r a n t e d   h e r e u n d e r ,   e a c h   R e c i p i e n t   h e r e b y   a s s u m e s   s o l e   r e s p o n s i b i l i t y   t o   s e c u r e   a n y   n e e d e d   l i c e n s e   o r   r i g h t   t o   a n y   I n t e l l e c t u a l   P r o p e r t y   R i g h t s .   F o r   e x a m p l e ,   i f   a   t h i r d   p a r t y   p a t e n t   o r   c o p y r i g h t   l i c e n s e   i s   r e q u i r e d   t o   a l l o w   R e c i p i e n t   t o   d i s t r i b u t e   t h e   P r o g r a m ,   i t   i s   R e c i p i e n t ' s   s o l e   r e s p o n s i b i l i t y   t o   a c q u i r e   a n y   s u c h   l i c e n s e   b e f o r e   d i s t r i b u t i n g   t h e   P r o g r a m .     
+ 
+ * * H ) * *   C o m m e r c i a l   d i s t r i b u t o r s   o f   s o f t w a r e   m a y   a c c e p t   c e r t a i n   r e s p o n s i b i l i t i e s   w i t h   r e s p e c t   t o   i t s   e n d - u s e r s ,   b u s i n e s s   p a r t n e r s   a n d   t h e   l i k e .   W h i l e   A g r e e m e n t   i s   i n t e n d e d   t o   f a c i l i t a t e   t h e   c o m m e r c i a l   u s e   o f   t h e   P r o g r a m ,   e a c h   R e c i p i e n t   w h o   i n c l u d e s   t h e   P r o g r a m   i n   a   c o m m e r c i a l   p r o d u c t   o f f e r i n g   m u s t   d o   s o   i n   a   m a n n e r   w h i c h   d o e s   n o t   c r e a t e   p o t e n t i a l   l i a b i l i t y   f o r   t h e   C o n t r i b u t o r s .   T h e r e f o r e ,   i f   a   R e c i p i e n t   i n c l u d e s   t h e   P r o g r a m   i n   a   c o m m e r c i a l   p r o d u c t   o f f e r i n g ,   s u c h   R e c i p i e n t   ( " C o m m e r c i a l   R e c i p i e n t " )   h e r e b y   a g r e e s   t o   d e f e n d   a n d   i n d e m n i f y   e v e r y   C o n t r i b u t o r   ( " I n d e m n i f i e d   C o n t r i b u t o r " )   a g a i n s t   a n y   l o s s e s ,   d a m a g e s   a n d   c o s t s   ( c o l l e c t i v e l y   " L o s s e s " )   a r i s i n g   f r o m   c l a i m s ,   l a w s u i t s   a n d   o t h e r   l e g a l   a c t i o n s   b r o u g h t   b y   a   t h i r d   p a r t y   a g a i n s t   t h e   I n d e m n i f i e d   C o n t r i b u t o r   t o   t h e   e x t e n t   c a u s e d   b y   t h e   a c t s   o r   o m i s s i o n s   o f   s u c h   C o m m e r c i a l   R e c i p i e n t   i n   c o n n e c t i o n   w i t h   i t s   d i s t r i b u t i o n   o f   t h e   P r o g r a m   i n   a   c o m m e r c i a l   p r o d u c t   o f f e r i n g .   T h e   o b l i g a t i o n s   i n   t h i s   s e c t i o n   d o   n o t   a p p l y   t o   a n y   c l a i m s   o r   L o s s e s   r e l a t i n g   t o   a n y   a c t u a l   o r   a l l e g e d   I n t e l l e c t u a l   P r o p e r t y   R i g h t s   i n f r i n g e m e n t .   I n   o r d e r   t o   q u a l i f y ,   a n   I n d e m n i f i e d   C o n t r i b u t o r   m u s t :   a )   p r o m p t l y   n o t i f y   t h e   C o m m e r c i a l   R e c i p i e n t   i n   w r i t i n g   o f   s u c h   c l a i m ,   a n d   b )   a l l o w   t h e   C o m m e r c i a l   R e c i p i e n t   t o   c o n t r o l ,   a n d   c o o p e r a t e   w i t h   t h e   C o m m e r c i a l   R e c i p i e n t   i n ,   t h e   d e f e n s e   a n d   a n y   r e l a t e d   s e t t l e m e n t   n e g o t i a t i o n s .   T h e   I n d e m n i f i e d   C o n t r i b u t o r   m a y   p a r t i c i p a t e   i n   a n y   s u c h   c l a i m   a t   i t s   o w n   e x p e n s e . < b r > & n b s p ; < b r > B y   w a y   o f   e x a m p l e   o n l y ,   a   R e c i p i e n t   m i g h t   i n c l u d e   t h e   P r o g r a m   i n   a   c o m m e r c i a l   p r o d u c t   o f f e r i n g ,   t h e    P r o d u c t  .   T h a t   C o n t r i b u t o r   i s   t h e n   a   C o m m e r c i a l   R e c i p i e n t .   I f   t h a t   C o m m e r c i a l   R e c i p i e n t   t h e n   m a k e s   p e r f o r m a n c e   c l a i m s ,   o r   o f f e r s   w a r r a n t i e s   r e l a t e d   t o   t h e   P r o d u c t ,   t h o s e   p e r f o r m a n c e   c l a i m s   a n d   w a r r a n t i e s   a r e   s u c h   C o m m e r c i a l   R e c i p i e n t  s   r e s p o n s i b i l i t y   a l o n e .   U n d e r   t h i s   s e c t i o n ,   t h e   C o m m e r c i a l   R e c i p i e n t   w o u l d   h a v e   t o   d e f e n d   c l a i m s   a g a i n s t   t h e   o t h e r   C o n t r i b u t o r s   r e l a t e d   t o   t h o s e   p e r f o r m a n c e   c l a i m s   a n d   w a r r a n t i e s ,   a n d   i f   a   c o u r t   r e q u i r e s   a n y   o t h e r   C o n t r i b u t o r   t o   p a y   a n y   d a m a g e s   a s   a   r e s u l t ,   t h e   C o m m e r c i a l   R e c i p i e n t   m u s t   p a y   t h o s e   d a m a g e s   w i t h o u t   o f f s e t .     
+ 
+ # #   S e c t i o n   3 .   G e n e r a l   P r o v i s i o n s 
+ 
+ * * 3 . 1 * *   * * G o v e r n i n g   L a w . * *   T h i s   A g r e e m e n t   w i l l   b e   g o v e r n e d   b y ,   c o n s t r u e d ,   a n d   e n f o r c e d   i n   a c c o r d a n c e   w i t h   t h e   l a w s   o f   S w e d e n ,   w i t h o u t   r e g a r d   t o   c o n f l i c t s   o f   l a w s   p r i n c i p l e s ,   w i l l   a p p l y   t o   a l l   m a t t e r s   r e l a t i n g   t o   t h i s   A g r e e m e n t .   A n y   d i s p u t e ,   c o n t r o v e r s y   o r   c l a i m   a r i s i n g   o u t   o f   o r   i n   c o n n e c t i o n   w i t h   t h i s   A g r e e m e n t   t h a t   t h e   p a r t i e s   h e r e t o   h a v e   f a i l e d   t o   s e t t l e   a m i c a b l y   w i l l   b e   f i n a l l y   s e t t l e d   b y   t h e   s e n i o r   m a n a g e m e n t   i n   A S S A   A B L O Y   A B .   I n   t h e   e v e n t   t h a t   A S S A   A B L O Y   A B  s   d i r e c t   o r   i n d i r e c t   s h a r e h o l d i n g   i n   a n y o n e   o f   t h e   p a r t i e s   t o   t h i s   A g r e e m e n t   d e c r e a s e s   t o   u n d e r   5 0 % ,   t h e n   t h e   a b o v e   p r o v i s i o n s   s h a l l   b e c o m e   n u l l   a n d   v o i d   a n d   t h e   d i s p u t e ,   c o n t r o v e r s y   o r   c l a i m   s h a l l   b e   f i n a l l y   s e t t l e d   b y   t h e   D i s t r i c t   C o u r t   o f   S t o c k h o l m . 
+ 
+ * * 3 . 2 * *   * * C o n f i d e n t i a l   I n f o r m a t i o n . * *   A n y   p a r t y   w i t h   a c c e s s   t o   t h e   P r o g r a m   s h a l l   t r e a t   t h e   P r o g r a m   a s   c o n f i d e n t i a l   i n f o r m a t i o n   a n d   a g r e e   t o   r e t a i n   t h e   P r o g r a m   i n   s t r i c t e s t   c o n f i d e n c e   p e r p e t u a l l y   w i t h   r e s p e c t   t o   t h e   s o u r c e   c o d e   ( h u m a n   r e a d a b l e )   o f   t h e   P r o g r a m .   A   R e c i p i e n t   m a y   d i s c l o s e   P r o g r a m   t o   t h e   e x t e n t   r e q u i r e d   b y   a   f i n a l   d e c i s i o n   o r   j u d g m e n t   b y   a   c o u r t   o f   c o m p e t e n t   j u r i s d i c t i o n   o r   u n d e r   o p e r a t i o n   o f   m a n d a t o r y   a n d   a p p l i c a b l e   l a w   p r o v i d e d   t h a t   R e c i p i e n t   ( i )   n o t i f i e s   t h e   C o n t r i b u t o r ( s )   o f   s u c h   d e m a n d   p r i o r   t o   t h e   d i s c l o s u r e ,   ( i i )   o n l y   d i s c l o s e   i n f o r m a t i o n   a b s o l u t e l y   n e c e s s a r y   a n d   ( i i i )   t h a t   R e c i p i e n t   a l l o w s   t h e   C o n t r i b u t o r ( s )   t h e   o p p o r t u n i t y   t o   o b j e c t   t o   s u c h   c o u r t   o r   o t h e r   l e g a l   b o d y   r e q u i r i n g   s u c h   d i s c l o s u r e . 
+ 
+ * * 3 . 3 * *   * * L i m i t a t i o n   o f   L i a b i l i t y . * *   T H E   P R O G R A M   A R E   P R O V I D E D   " A S   I S " ,   W I T H O U T   A N Y   W A R R A N T Y   O F   A N Y   K I N D ,   E X P R E S S   O R   I M P L I E D ,   I N C L U D I N G   B U T   N O T   L I M I T E D   T O   W A R R A N T I E S   O F   M E R C H A N T A B I L I T Y ,   F I T N E S S   F O R   A   P A R T I C U L A R   P U R P O S E   A N D   N O N I N F R I N G E M E N T .   I N   N O   E V E N T   S H A L L   A N Y   C O N T R I B U T O R   B E   L I A B L E   F O R   A N Y   C L A I M ,   D A M A G E S   O R   O T H E R   L I A B I L I T Y ,   W H E T H E R   I N   A N   A C T I O N   O F   C O N T R A C T ,   T O R T   O R   O T H E R W I S E ,   A R I S I N G   F R O M ,   O U T   O F   O R   I N   C O N N E C T I O N   W I T H   T H E   P R O G R A M   O R   T H E   U S E   O F   O R   O T H E R   D E A L I N G S   I N   T H E   P R O G R A M . 
+ 
+ * * 3 . 4 * *   * * I n v a l i d i t y . * *   I f   a n y   p r o v i s i o n   o f   t h i s   A g r e e m e n t   i s   i n v a l i d   o r   u n e n f o r c e a b l e   u n d e r   a p p l i c a b l e   l a w ,   i t   s h a l l   n o t   a f f e c t   t h e   v a l i d i t y   o r   e n f o r c e a b i l i t y   o f   t h e   r e m a i n d e r   o f   t h e   t e r m s   o f   t h i s   A g r e e m e n t ,   a n d   w i t h o u t   f u r t h e r   a c t i o n   b y   t h e   p a r t i e s   h e r e t o ,   s u c h   p r o v i s i o n   s h a l l   b e   r e f o r m e d   t o   t h e   m i n i m u m   e x t e n t   n e c e s s a r y   t o   m a k e   s u c h   p r o v i s i o n   v a l i d   a n d   e n f o r c e a b l e . 
+ 
+ * * 3 . 5 * *   * * T e r m i n a t i o n   o f   r i g h t s . * * 
+ -   * * i ) * *   A l l   R e c i p i e n t ' s   r i g h t s   u n d e r   t h i s   A g r e e m e n t   s h a l l   t e r m i n a t e   i f   i t   f a i l s   t o   c o m p l y   w i t h   a n y   o f   t h e   m a t e r i a l   t e r m s   o r   c o n d i t i o n s   o f   t h i s   A g r e e m e n t   a n d   d o e s   n o t   c u r e   s u c h   f a i l u r e   i n   a   r e a s o n a b l e   p e r i o d   o f   t i m e   a f t e r   b e c o m i n g   a w a r e   o f   s u c h   n o n c o m p l i a n c e .   I f   a l l   R e c i p i e n t ' s   r i g h t s   u n d e r   t h i s   A g r e e m e n t   t e r m i n a t e ,   R e c i p i e n t   a g r e e s   t o   c e a s e   a n y   u s e   a n d   d i s t r i b u t i o n   o f   t h e   P r o g r a m   a s   s o o n   a s   r e a s o n a b l y   p r a c t i c a b l e .   H o w e v e r ,   R e c i p i e n t ' s   o b l i g a t i o n s   u n d e r   t h i s   A g r e e m e n t   a n d   a n y   l i c e n s e s   g r a n t e d   b y   R e c i p i e n t   r e l a t i n g   t o   t h e   P r o g r a m   s h a l l   c o n t i n u e   a n d   s u r v i v e . 
+ -   * * i i ) * *   I n   t h e   e v e n t   a   R e c i p i e n t   c e a s e s   t o   b e   a n   A f f i l i a t e   a l l   r i g h t s   g r a n t e d   u n d e r   t h i s   A g r e e m e n t   w i l l   t e r m i n a t e   a u t o m a t i c a l l y . 
+XThingRPC_NThingRPC is the Swift implementation of the ASSA ABLOY Thing RCP core library.U3.2.0Ÿ	
+}l~npq—jk_GCopyright (c) 2014-2023 ASSA ABLOY. Version 9.0.4 All rights reserved.
+_SeosMobileKeysSDK-Release     2 : F O [ g l { É ã é ô ß ® ‘Úˆ 4;NQ[hç	◊	·
+
+
+,
+/
+5
+K
+´
+“˛4yíï†Ω{¨Îˆ,5CPdqè¨ŒÎBZBaBmBçB≥B∫BÕB÷BËC'C:CCCOCfCyC|DD7HvH{H°HßH∫HΩHÀH‚H˘p€p˘qq3q9qLqOqcqóq£qµq—qÿqÎqÓrr&rFrërõrµrŸrﬂrÚrıss7sµtﬂ‡ﬂÈ‡:‡@‡S‡V‡†             Ä              ‡º

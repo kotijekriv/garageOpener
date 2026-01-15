@@ -1,0 +1,1270 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name ThingRPC
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+import CBORCoding
+import Foundation
+import Swift
+@_exported import ThingRPC
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum CryptoLibError : Swift.Error {
+  case invalidSignature
+  case signingFailed
+  case invalidKeyPair
+  case libraryNotInitiated
+  public static func == (a: ThingRPC.CryptoLibError, b: ThingRPC.CryptoLibError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol VerifyingLib {
+  func getSignatureSize() -> Swift.Int
+  func verify(message: Swift.Array<Swift.UInt8>, signature: Swift.Array<Swift.UInt8>, publicKey: ThingRPC.PublicKey) -> Swift.Bool
+}
+public protocol CryptoLib : ThingRPC.VerifyingLib {
+  func getPublicKey() throws -> ThingRPC.PublicKey
+  func sign(message: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public struct EpochDate : Swift.Codable, Swift.Equatable {
+  public var time: Foundation.Date {
+    get
+  }
+  public init(thingRPCTimeMS: Swift.Int64)
+  public init(_ date: Foundation.Date)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: ThingRPC.EpochDate, b: ThingRPC.EpochDate) -> Swift.Bool
+}
+public struct ThingRPCGetMetaResponse : Swift.Decodable, Swift.Equatable {
+  public let conversations: [Swift.String]
+  public let doc: Swift.String
+  public let name: Swift.String
+  public let types: [ThingRPC.ThingRPCObjectType]
+  public init(conversations: [Swift.String], doc: Swift.String, name: Swift.String, types: [ThingRPC.ThingRPCObjectType])
+  public static func == (a: ThingRPC.ThingRPCGetMetaResponse, b: ThingRPC.ThingRPCGetMetaResponse) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ThingRPCGetConMetaRequest : Swift.Encodable {
+  public init(name: Swift.String)
+  public var name: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct ThingRPCGetConMetaResponse : Swift.Decodable, Swift.Equatable {
+  public let doc: Swift.String
+  public let event: ThingRPC.ThingRPCCBORSchema?
+  public let name: Swift.String
+  public let req: ThingRPC.ThingRPCCBORSchema?
+  public let res: ThingRPC.ThingRPCCBORSchema?
+  public enum ConversationType : Swift.String, Swift.Decodable, Swift.Equatable {
+    case call
+    case event
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let type: ThingRPC.ThingRPCGetConMetaResponse.ConversationType
+  public let permissions: ThingRPC.ThingRPCPermissionList
+  public let exceptions: ThingRPC.ThingRPCExceptionList
+  public static func == (a: ThingRPC.ThingRPCGetConMetaResponse, b: ThingRPC.ThingRPCGetConMetaResponse) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ThingRPCObjectMeta {
+}
+public enum ThingRPCImplicitConversation<Object> where Object : ThingRPC.ThingRPCObject {
+  public enum GetMeta : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String {
+      get
+    }
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCGetMetaResponse
+  }
+  public enum GetConMeta : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String {
+      get
+    }
+    public typealias RequestParams = ThingRPC.ThingRPCGetConMetaRequest
+    public typealias ResponseParams = ThingRPC.ThingRPCGetConMetaResponse
+  }
+}
+extension ThingRPC.ThingRPCObject {
+  public typealias GetMeta = ThingRPC.ThingRPCImplicitConversation<Self>.GetMeta
+  public typealias GetConMeta = ThingRPC.ThingRPCImplicitConversation<Self>.GetConMeta
+}
+extension ThingRPC.ThingRPCObject {
+  public static func getAllMeta(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, onResponse: @escaping (ThingRPC.ThingRPCResponse<ThingRPC.ThingRPCObjectMeta>) -> Swift.Void)
+}
+public struct IString : Swift.Codable, Swift.Equatable {
+  public init(english en: Swift.String)
+  public init(swedish sv: Swift.String)
+  public init(german de: Swift.String)
+  public init(french fr: Swift.String)
+  public init(spanish es: Swift.String)
+  public init(_ lang: Swift.String, _ string: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func string(for lang: Swift.String) -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var en: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var sv: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var fr: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var de: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var es: Swift.String? {
+    get
+  }
+  #endif
+  public mutating func append(_ lang: Swift.String, _ string: Swift.String)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: ThingRPC.IString, b: ThingRPC.IString) -> Swift.Bool
+}
+extension ThingRPC.IString {
+  public static func += (lhs: inout ThingRPC.IString, rhs: (lang: Swift.String, string: Swift.String))
+}
+public struct ProtocolVersion : Swift.Decodable, Swift.Equatable {
+  public var major: Swift.Int {
+    get
+  }
+  public var minor: Swift.Int {
+    get
+  }
+  public init(major: Swift.Int, minor: Swift.Int)
+  public static func == (a: ThingRPC.ProtocolVersion, b: ThingRPC.ProtocolVersion) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias PublicKey = Swift.Array<Swift.UInt8>
+public enum SignedChainError : Swift.Error {
+  case invalidVersion
+  case invalidSignature
+  case illegalRedelegation
+  case signingFailed
+  public static func == (a: ThingRPC.SignedChainError, b: ThingRPC.SignedChainError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SignedChain : Swift.Codable, Swift.Equatable {
+  public static let currentVersion: Swift.String
+  public let version: Swift.String
+  public var signedDelegations: [ThingRPC.SignedChain.SignedDelegation] {
+    get
+  }
+  public static var verifyingLib: (any ThingRPC.VerifyingLib)?
+  public init(cryptoLib: any ThingRPC.CryptoLib, delegation: ThingRPC.ThingRPCDelegation) throws
+  public mutating func redelegate(cryptoLib: any ThingRPC.CryptoLib, delegation: ThingRPC.ThingRPCDelegation) throws
+  public func intersectMainIntervals() -> ThingRPC.TimeConstraint
+  public func hasValidSignatures() -> Swift.Bool
+  public func hasValidSignatures(_ verifyingLib: any ThingRPC.VerifyingLib) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: ThingRPC.SignedChain, b: ThingRPC.SignedChain) -> Swift.Bool
+}
+extension ThingRPC.SignedChain {
+  public struct SignedDelegation : Swift.Equatable, Swift.Encodable {
+    public let signature: [Swift.UInt8]
+    public let rawDelegation: [Swift.UInt8]
+    public let delegation: ThingRPC.ThingRPCDelegation
+    public static func == (a: ThingRPC.SignedChain.SignedDelegation, b: ThingRPC.SignedChain.SignedDelegation) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+  }
+}
+public enum StreamChannelError : Swift.Error {
+  case ioError
+  case streamClosed
+  public static func == (a: ThingRPC.StreamChannelError, b: ThingRPC.StreamChannelError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc public class StreamChannel : ObjectiveC.NSObject, ThingRPC.ThingRPCByteChannel, Foundation.StreamDelegate {
+  public init(outputStream: Foundation.OutputStream, inputStream: Foundation.InputStream)
+  public func register(callback: @escaping (Foundation.Data) -> Swift.Void, errorhandler: @escaping (any Swift.Error) -> Swift.Void)
+  public func write(_ data: [Foundation.Data]) throws
+  @objc public func stream(_ aStream: Foundation.Stream, handle eventCode: Foundation.Stream.Event)
+  @objc deinit
+}
+public enum ThingRPCAccessObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum RequestAccess : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCAccessObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var accessResult: Swift.Bool
+      public init(accessResult: Swift.Bool)
+      public static func == (a: ThingRPC.ThingRPCAccessObject.RequestAccess.ResponseParams, b: ThingRPC.ThingRPCAccessObject.RequestAccess.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+}
+public enum ThingRPCBasicLockObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum Unlock : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCBasicLockObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum Lock : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCBasicLockObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+}
+public enum ThingRPCBasicLockProfilleObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum AccessState : Swift.Decodable, Swift.Equatable {
+    case active
+    case inactive
+    case unknown
+    public static func == (a: ThingRPC.ThingRPCBasicLockProfilleObject.AccessState, b: ThingRPC.ThingRPCBasicLockProfilleObject.AccessState) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum RequestAccess : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCBasicLockProfilleObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var accessResult: Swift.Bool
+      public init(accessResult: Swift.Bool)
+      public static func == (a: ThingRPC.ThingRPCBasicLockProfilleObject.RequestAccess.ResponseParams, b: ThingRPC.ThingRPCBasicLockProfilleObject.RequestAccess.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum ReleaseAccess : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCBasicLockProfilleObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var accessResult: Swift.Bool
+      public init(accessResult: Swift.Bool)
+      public static func == (a: ThingRPC.ThingRPCBasicLockProfilleObject.ReleaseAccess.ResponseParams, b: ThingRPC.ThingRPCBasicLockProfilleObject.ReleaseAccess.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum GetAccessState : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCBasicLockProfilleObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var state: ThingRPC.ThingRPCBasicLockProfilleObject.AccessState
+      public init(state: ThingRPC.ThingRPCBasicLockProfilleObject.AccessState)
+      public static func == (a: ThingRPC.ThingRPCBasicLockProfilleObject.GetAccessState.ResponseParams, b: ThingRPC.ThingRPCBasicLockProfilleObject.GetAccessState.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+}
+public protocol ThingRPCByteChannel {
+  func register(callback: @escaping (Foundation.Data) -> Swift.Void, errorhandler: @escaping (any Swift.Error) -> Swift.Void)
+  func write(_ data: [Foundation.Data]) throws
+}
+public struct ThingRPCCBORSchema : Swift.Decodable, Swift.Equatable {
+  public let fields: [Swift.String : ThingRPC.ThingRPCCBORSchema.Field]
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: ThingRPC.ThingRPCCBORSchema, b: ThingRPC.ThingRPCCBORSchema) -> Swift.Bool
+}
+extension ThingRPC.ThingRPCCBORSchema {
+  public struct Field : Swift.Equatable {
+    public let type: ThingRPC.ThingRPCCBORSchema.FieldType
+    public let info: ThingRPC.ThingRPCCBORSchema.Info?
+    public static func == (a: ThingRPC.ThingRPCCBORSchema.Field, b: ThingRPC.ThingRPCCBORSchema.Field) -> Swift.Bool
+  }
+  public struct Info : Swift.Decodable, Swift.Equatable {
+    public let doc: Swift.String
+    public let optional: Swift.Bool
+    public init(doc: Swift.String, optional: Swift.Bool)
+    public init(from decoder: any Swift.Decoder) throws
+    public static func == (a: ThingRPC.ThingRPCCBORSchema.Info, b: ThingRPC.ThingRPCCBORSchema.Info) -> Swift.Bool
+  }
+  public enum FieldType : Swift.Decodable, Swift.Equatable {
+    case boolean(Swift.Bool)
+    case integer(Swift.Int64)
+    case double(Swift.Double)
+    case string(Swift.String)
+    case bytes(Foundation.Data)
+    case object(ThingRPC.ThingRPCCBORSchema)
+    case array([ThingRPC.ThingRPCCBORSchema.FieldType])
+    public init(from decoder: any Swift.Decoder) throws
+    public static func == (a: ThingRPC.ThingRPCCBORSchema.FieldType, b: ThingRPC.ThingRPCCBORSchema.FieldType) -> Swift.Bool
+  }
+}
+extension Swift.Dictionary where Key == Swift.String, Value == ThingRPC.ThingRPCCBORSchema.Field {
+  public func isEqual(other: Swift.Dictionary<Swift.String, ThingRPC.ThingRPCCBORSchema.Field>) -> Swift.Bool
+}
+extension ThingRPC.ThingRPCCBORSchema.FieldType {
+  public func isEqual(other: ThingRPC.ThingRPCCBORSchema.FieldType) -> Swift.Bool
+}
+public enum ThingRPCCertificateObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum Info {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCCertificateObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var profile: Swift.String
+      public var serialNumber: Foundation.Data
+      public var date: ThingRPC.EpochDate
+      public init(profile: Swift.String, serialNumber: Foundation.Data, date: ThingRPC.EpochDate)
+      public static func == (a: ThingRPC.ThingRPCCertificateObject.Info.ResponseParams, b: ThingRPC.ThingRPCCertificateObject.Info.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum SignCSR {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCCertificateObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var certificateRequestDetails: Foundation.Data
+      public var serialNumber: Foundation.Data
+      public var signature: Foundation.Data
+      public init(certificateRequestDetails: Foundation.Data, serialNumber: Foundation.Data, signature: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCCertificateObject.SignCSR.RequestParams, b: ThingRPC.ThingRPCCertificateObject.SignCSR.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var signedCSR: Foundation.Data
+      public var signature: Foundation.Data
+      public init(signedCSR: Foundation.Data, signature: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCCertificateObject.SignCSR.ResponseParams, b: ThingRPC.ThingRPCCertificateObject.SignCSR.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum Inject {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCCertificateObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var certificate: Foundation.Data
+      public var serialNumber: Foundation.Data
+      public var signature: Foundation.Data
+      public init(certificate: Foundation.Data, serialNumber: Foundation.Data, signature: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCCertificateObject.Inject.RequestParams, b: ThingRPC.ThingRPCCertificateObject.Inject.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var success: Swift.Bool
+      public static func == (a: ThingRPC.ThingRPCCertificateObject.Inject.ResponseParams, b: ThingRPC.ThingRPCCertificateObject.Inject.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+}
+public protocol ThingRPCClientSessionDelegate : AnyObject {
+  func onChannelError(_ clientSession: ThingRPC.ThingRPCClientSession, error: any Swift.Error)
+}
+@_hasMissingDesignatedInitializers public class ThingRPCClientSession {
+  public var isAlive: Swift.Bool {
+    get
+  }
+  weak public var delegate: (any ThingRPC.ThingRPCClientSessionDelegate)?
+  final public let remoteSignPub: ThingRPC.PublicKey
+  public static func createClientSession(with channel: any ThingRPC.ThingRPCByteChannel, remoteSignPub: ThingRPC.PublicKey, success: @escaping (ThingRPC.ThingRPCClientSession) -> Swift.Void, failure: @escaping (any Swift.Error) -> Swift.Void)
+  @objc deinit
+}
+extension ThingRPC.ThingRPCClientSession : ThingRPC.ThingRPCConversationManagerProtocol {
+  public func call<C, P>(_ conversation: C.Type, params: P, onResponse: @escaping (C.Response) -> Swift.Void) where C : ThingRPC.ThingRPCCallConversation, P : Swift.Encodable, C.ResponseParams == ()
+  public func call<C, P>(_ conversation: C.Type, params: P, onResponse: @escaping (C.Response) -> Swift.Void) where C : ThingRPC.ThingRPCCallConversation, P : Swift.Encodable, C.ResponseParams : Swift.Decodable
+  public func subscribe<E, P>(_ conversation: E.Type, params: P, onResponse: @escaping (E.Response) -> Swift.Void, onEvent: @escaping (E.EventResponse) -> Swift.Void) where E : ThingRPC.ThingRPCEventConversation, P : Swift.Encodable, E.ResponseParams == ()
+  public func subscribe<E, P>(_ conversation: E.Type, params: P, onResponse: @escaping (E.Response) -> Swift.Void, onEvent: @escaping (E.EventResponse) -> Swift.Void) where E : ThingRPC.ThingRPCEventConversation, P : Swift.Encodable, E.ResponseParams : Swift.Decodable
+}
+extension ThingRPC.ThingRPCClientSession : ThingRPC.ThingRPCConversationManagerDelegate {
+  public func onChannelError(_ manager: ThingRPC.ThingRPCConversationManager, error: any Swift.Error)
+}
+public protocol ThingRPCCoder {
+  func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
+  func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
+}
+@_hasMissingDesignatedInitializers public class ThingRPCCBORCoder : ThingRPC.ThingRPCCoder {
+  public func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
+  public func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ThingRPCJSONCoder : ThingRPC.ThingRPCCoder {
+  public func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
+  public func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
+  @objc deinit
+}
+public protocol ThingRPCObject {
+  static var name: Swift.String { get }
+  static var types: [ThingRPC.ThingRPCObjectType] { get }
+}
+public protocol ThingRPCConversation {
+  static var name: Swift.String { get }
+  associatedtype Object : ThingRPC.ThingRPCObject
+  associatedtype RequestParams
+  associatedtype ResponseParams
+  typealias Response = ThingRPC.ThingRPCResponse<Self.ResponseParams>
+}
+public protocol ThingRPCCallConversation : ThingRPC.ThingRPCConversation {
+}
+public protocol ThingRPCEventConversation : ThingRPC.ThingRPCConversation {
+  associatedtype EventParams : Swift.Decodable
+  typealias EventResponse = ThingRPC.ThingRPCResponse<Self.EventParams>
+}
+public typealias ThingRPCEmptyRequestParams = Swift.Void
+public typealias ThingRPCEmptyResponseParams = Swift.Void
+extension ThingRPC.ThingRPCCallConversation where Self.RequestParams == (), Self.ResponseParams == () {
+  public static func call(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, onResponse: @escaping (Self.Response) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCCallConversation where Self.RequestParams : Swift.Encodable, Self.ResponseParams == () {
+  public static func call(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, params: Self.RequestParams, onResponse: @escaping (Self.Response) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCCallConversation where Self.RequestParams == (), Self.ResponseParams : Swift.Decodable {
+  public static func call(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, onResponse: @escaping (Self.Response) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCCallConversation where Self.RequestParams : Swift.Encodable, Self.ResponseParams : Swift.Decodable {
+  public static func call(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, params: Self.RequestParams, onResponse: @escaping (Self.Response) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCEventConversation where Self.RequestParams == (), Self.ResponseParams == () {
+  public static func subscribe(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, onResponse: @escaping (Self.Response) -> Swift.Void, onEvent: @escaping (Self.EventResponse) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCEventConversation where Self.RequestParams == (), Self.ResponseParams : Swift.Decodable {
+  public static func subscribe(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, onResponse: @escaping (Self.Response) -> Swift.Void, onEvent: @escaping (Self.EventResponse) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCEventConversation where Self.RequestParams : Swift.Encodable, Self.ResponseParams == () {
+  public static func subscribe(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, params: Self.RequestParams, onResponse: @escaping (Self.Response) -> Swift.Void, onEvent: @escaping (Self.EventResponse) -> Swift.Void)
+}
+extension ThingRPC.ThingRPCEventConversation where Self.RequestParams : Swift.Encodable, Self.ResponseParams : Swift.Decodable {
+  public static func subscribe(with manager: any ThingRPC.ThingRPCConversationManagerProtocol, params: Self.RequestParams, onResponse: @escaping (Self.Response) -> Swift.Void, onEvent: @escaping (Self.EventResponse) -> Swift.Void)
+}
+public enum ThingRPCConversationError : Swift.Error {
+  case potException(ThingRPC.ThingRPCException, message: Swift.String?)
+  case encodingError(Swift.EncodingError)
+  case decodingError(Swift.DecodingError)
+  case unexpectedMessage
+  case alreadySubscribed
+  case otherError(any Swift.Error)
+}
+public protocol ThingRPCConversationManagerDelegate : AnyObject {
+  func onChannelError(_ manager: ThingRPC.ThingRPCConversationManager, error: any Swift.Error)
+}
+public class ThingRPCConversationManager {
+  public var coder: any ThingRPC.ThingRPCCoder
+  public var responseQueue: Dispatch.DispatchQueue
+  weak public var delegate: (any ThingRPC.ThingRPCConversationManagerDelegate)?
+  public init(channel: any ThingRPC.ThingRPCByteChannel)
+  @objc deinit
+}
+extension ThingRPC.ThingRPCConversationManager : ThingRPC.ThingRPCConversationManagerProtocol {
+  public func call<C, P>(_ conversation: C.Type, params: P, onResponse: @escaping (C.Response) -> Swift.Void) where C : ThingRPC.ThingRPCCallConversation, P : Swift.Encodable, C.ResponseParams == ()
+  public func call<C, P>(_ conversation: C.Type, params: P, onResponse: @escaping (C.Response) -> Swift.Void) where C : ThingRPC.ThingRPCCallConversation, P : Swift.Encodable, C.ResponseParams : Swift.Decodable
+  public func subscribe<E, P>(_ conversation: E.Type, params: P, onResponse: @escaping (E.Response) -> Swift.Void, onEvent: @escaping (E.EventResponse) -> Swift.Void) where E : ThingRPC.ThingRPCEventConversation, P : Swift.Encodable, E.ResponseParams == ()
+  public func subscribe<E, P>(_ conversation: E.Type, params: P, onResponse: @escaping (E.Response) -> Swift.Void, onEvent: @escaping (E.EventResponse) -> Swift.Void) where E : ThingRPC.ThingRPCEventConversation, P : Swift.Encodable, E.ResponseParams : Swift.Decodable
+}
+public protocol ThingRPCConversationManagerProtocol {
+  func call<C, P>(_ conversation: C.Type, params: P, onResponse: @escaping (C.Response) -> Swift.Void) where C : ThingRPC.ThingRPCCallConversation, P : Swift.Encodable, C.ResponseParams == ()
+  func call<C, P>(_ conversation: C.Type, params: P, onResponse: @escaping (C.Response) -> Swift.Void) where C : ThingRPC.ThingRPCCallConversation, P : Swift.Encodable, C.ResponseParams : Swift.Decodable
+  func subscribe<E, P>(_ conversation: E.Type, params: P, onResponse: @escaping (E.Response) -> Swift.Void, onEvent: @escaping (E.EventResponse) -> Swift.Void) where E : ThingRPC.ThingRPCEventConversation, P : Swift.Encodable, E.ResponseParams == ()
+  func subscribe<E, P>(_ conversation: E.Type, params: P, onResponse: @escaping (E.Response) -> Swift.Void, onEvent: @escaping (E.EventResponse) -> Swift.Void) where E : ThingRPC.ThingRPCEventConversation, P : Swift.Encodable, E.ResponseParams : Swift.Decodable
+}
+public enum ThingRPCDelegationError : Swift.Error {
+  case invalidArgument
+  public static func == (a: ThingRPC.ThingRPCDelegationError, b: ThingRPC.ThingRPCDelegationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ThingRPCDelegation : Swift.Codable, Swift.Equatable {
+  public let from: ThingRPC.PublicKey
+  public let to: ThingRPC.PublicKey
+  public let toName: Swift.String
+  public let timeConstraint: ThingRPC.TimeConstraint
+  public let permissions: ThingRPC.ThingRPCDelegation.PermissionSet
+  public let reDelegationLimit: Swift.UInt8
+  public let nonce: Swift.Int64
+  public static let defaultReDelegationSteps: Swift.UInt8
+  public static let maxReDelegationSteps: Swift.UInt8
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(from: ThingRPC.PublicKey, to: ThingRPC.PublicKey, toName: Swift.String, timeConstraint: ThingRPC.TimeConstraint, permissions: ThingRPC.ThingRPCDelegation.PermissionSet, reDelegationLimit: Swift.UInt8 = ThingRPCDelegation.defaultReDelegationSteps, nonce: Swift.Int64? = nil) throws
+  #endif
+  public func isDelegated(thingPubKey: ThingRPC.PublicKey, permission: ThingRPC.ThingRPCThingPermissionID, time: Foundation.Date) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: ThingRPC.ThingRPCDelegation, b: ThingRPC.ThingRPCDelegation) -> Swift.Bool
+}
+extension ThingRPC.ThingRPCDelegation {
+  public struct PermissionSet : Swift.Codable, Swift.Equatable {
+    public static let anyThingPub: [Swift.UInt8]
+    public static let anyPermission: ThingRPC.ThingRPCThingPermissionID
+    public static let any: ThingRPC.ThingRPCDelegation.PermissionSet
+    public static let anyRead: ThingRPC.ThingRPCDelegation.PermissionSet
+    public static let anyRoot: ThingRPC.ThingRPCDelegation.PermissionSet
+    public init()
+    public init(permissions: [(ThingRPC.PublicKey, ThingRPC.ThingRPCThingPermissionID)])
+    public func contains(pub: ThingRPC.PublicKey, permission: ThingRPC.ThingRPCThingPermissionID) -> Swift.Bool
+    public mutating func addPermission(pub: ThingRPC.PublicKey, permission: ThingRPC.ThingRPCThingPermissionID)
+    public init(from decoder: any Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public var permissions: [ThingRPC.ThingRPCDelegation.PermissionSet.Permission] {
+      get
+    }
+    public static func == (a: ThingRPC.ThingRPCDelegation.PermissionSet, b: ThingRPC.ThingRPCDelegation.PermissionSet) -> Swift.Bool
+  }
+}
+extension ThingRPC.ThingRPCDelegation.PermissionSet {
+  @_hasMissingDesignatedInitializers public class Permission : Swift.Codable {
+    public var pub: ThingRPC.PublicKey
+    public var permissionList: ThingRPC.ThingRPCPermissionList
+    @objc deinit
+    public func encode(to encoder: any Swift.Encoder) throws
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension ThingRPC.ThingRPCDelegation.PermissionSet.Permission : Swift.Equatable {
+  public static func == (lhs: ThingRPC.ThingRPCDelegation.PermissionSet.Permission, rhs: ThingRPC.ThingRPCDelegation.PermissionSet.Permission) -> Swift.Bool
+}
+public enum ThingRPCException : Swift.Decodable {
+  case notFound
+  case unauthorized
+  case forbidden
+  case internalError
+  case badRequest
+  case other(Swift.String)
+}
+extension ThingRPC.ThingRPCException : Swift.RawRepresentable {
+  public typealias RawValue = Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: ThingRPC.ThingRPCException.RawValue)
+  #endif
+  public var rawValue: ThingRPC.ThingRPCException.RawValue {
+    get
+  }
+}
+extension ThingRPC.ThingRPCException : Swift.Equatable {
+  public static func == (lhs: ThingRPC.ThingRPCException, rhs: ThingRPC.ThingRPCException) -> Swift.Bool
+}
+public struct ThingRPCExceptionList : Swift.Decodable, Swift.Equatable {
+  public struct Entry : Swift.Equatable {
+    public var exception: ThingRPC.ThingRPCException
+    public var description: Swift.String
+    public init(exception: ThingRPC.ThingRPCException, description: Swift.String)
+    public static func == (a: ThingRPC.ThingRPCExceptionList.Entry, b: ThingRPC.ThingRPCExceptionList.Entry) -> Swift.Bool
+  }
+  public let list: [ThingRPC.ThingRPCExceptionList.Entry]
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: ThingRPC.ThingRPCExceptionList, b: ThingRPC.ThingRPCExceptionList) -> Swift.Bool
+}
+public enum ThingRPCFirmwareObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum Info : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCFirmwareObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var buildInfo: Swift.String
+      public var firmwareVersion: Swift.String
+      public var model: Swift.String
+      public init(buildInfo: Swift.String, firmwareVersion: Swift.String, model: Swift.String)
+      public static func == (a: ThingRPC.ThingRPCFirmwareObject.Info.ResponseParams, b: ThingRPC.ThingRPCFirmwareObject.Info.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum Status : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCFirmwareObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var pendingImage: Swift.Bool
+      public var transferEnabled: Swift.Bool
+      public init(pendingImage: Swift.Bool, transferEnabled: Swift.Bool)
+      public static func == (a: ThingRPC.ThingRPCFirmwareObject.Status.ResponseParams, b: ThingRPC.ThingRPCFirmwareObject.Status.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum EnableTransfer : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCFirmwareObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum ApplyUpgrade : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCFirmwareObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var keytable: Foundation.Data
+      public var manifest: Foundation.Data
+      public init(keytable: Foundation.Data, manifest: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCFirmwareObject.ApplyUpgrade.RequestParams, b: ThingRPC.ThingRPCFirmwareObject.ApplyUpgrade.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum Subscribe : ThingRPC.ThingRPCEventConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCFirmwareObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCFirmwareObject.Subscribe.EventParams
+    public struct EventParams : Swift.Decodable {
+      public var status: ThingRPC.ThingRPCFirmwareObject.ApplyUpgradeState
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum ApplyUpgradeState : Swift.Int, Swift.Decodable {
+    case notStarted
+    case started
+    case verificationFailed
+    case bootloaderFailed
+    case succeeded
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.Int)
+    #endif
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+public struct ThingRPCIndicator : Swift.Encodable {
+  public static let version2: Swift.String
+  public var version: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct ThingRPCObjectType : Swift.Decodable, Swift.Equatable {
+  public let type: Swift.String
+  public let version: ThingRPC.ProtocolVersion
+  public init(type: Swift.String, version: ThingRPC.ProtocolVersion)
+  public static func == (a: ThingRPC.ThingRPCObjectType, b: ThingRPC.ThingRPCObjectType) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias ThingRPCPermissionList = [ThingRPC.ThingRPCThingPermissionID]
+public struct ThingRPCUserPermission : Swift.Codable, Swift.Equatable {
+  public var permissionList: ThingRPC.ThingRPCPermissionList
+  public var reDelegationLimit: Swift.Int
+  public var timeConstraint: ThingRPC.TimeConstraint?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(permissionList: ThingRPC.ThingRPCPermissionList, reDelegationLimit: Swift.Int, timeConstraint: ThingRPC.TimeConstraint? = nil)
+  #endif
+  public static func == (a: ThingRPC.ThingRPCUserPermission, b: ThingRPC.ThingRPCUserPermission) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ThingRPCThingPermission : Swift.Codable, Swift.Equatable {
+  public let doc: ThingRPC.IString
+  public let id: ThingRPC.ThingRPCThingPermissionID
+  public let name: ThingRPC.IString
+  public static func == (a: ThingRPC.ThingRPCThingPermission, b: ThingRPC.ThingRPCThingPermission) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum ThingRPCThingPermissionID : Swift.Codable {
+  case any
+  case `public`
+  case root
+  case read
+  case access
+  case operate
+  case other(Swift.String)
+}
+extension ThingRPC.ThingRPCThingPermissionID : Swift.RawRepresentable {
+  public typealias RawValue = Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: ThingRPC.ThingRPCThingPermissionID.RawValue)
+  #endif
+  public var rawValue: ThingRPC.ThingRPCThingPermissionID.RawValue {
+    get
+  }
+}
+extension ThingRPC.ThingRPCThingPermissionID : Swift.Equatable, Swift.Comparable {
+  public static func == (lhs: ThingRPC.ThingRPCThingPermissionID, rhs: ThingRPC.ThingRPCThingPermissionID) -> Swift.Bool
+  public static func < (lhs: ThingRPC.ThingRPCThingPermissionID, rhs: ThingRPC.ThingRPCThingPermissionID) -> Swift.Bool
+}
+public enum ThingRPCProvisioningObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+}
+extension ThingRPC.ThingRPCProvisioningObject {
+  public struct KeyUsageFlags : Swift.OptionSet, Swift.Codable {
+    public let rawValue: Swift.Int
+    public init(rawValue: Swift.Int)
+    public static let digitalSignature: ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+    public static let keyEncryption: ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+    public static let dataEncryption: ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+    public static let keyAgreement: ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+    public typealias ArrayLiteralElement = ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+    public typealias Element = ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+    public typealias RawValue = Swift.Int
+  }
+  public enum KeyReturn : Swift.Int, Swift.Codable, Swift.CaseIterable {
+    case certificate
+    case hash
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.Int)
+    #endif
+    public typealias AllCases = [ThingRPC.ThingRPCProvisioningObject.KeyReturn]
+    public typealias RawValue = Swift.Int
+    nonisolated public static var allCases: [ThingRPC.ThingRPCProvisioningObject.KeyReturn] {
+      get
+    }
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum KeySourceType : Swift.Int, Swift.Codable, Swift.CaseIterable {
+    case keystore
+    case sam
+    case keystore_and_sam
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.Int)
+    #endif
+    public typealias AllCases = [ThingRPC.ThingRPCProvisioningObject.KeySourceType]
+    public typealias RawValue = Swift.Int
+    nonisolated public static var allCases: [ThingRPC.ThingRPCProvisioningObject.KeySourceType] {
+      get
+    }
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum StatusCode : Swift.Decodable, Swift.Equatable {
+    case known(ThingRPC.ThingRPCProvisioningObject.KnownStatusCode)
+    case unknown(Swift.Int)
+    public init(from decoder: any Swift.Decoder) throws
+    public var rawValue: Swift.Int {
+      get
+    }
+    public static func == (a: ThingRPC.ThingRPCProvisioningObject.StatusCode, b: ThingRPC.ThingRPCProvisioningObject.StatusCode) -> Swift.Bool
+  }
+  public enum KnownStatusCode : Swift.Int, Swift.Decodable, Swift.CaseIterable {
+    case success
+    case errorNotImplemented
+    case errorWrongParameters
+    case errorGeneric
+    case errorNonexistingSlotId
+    case errorNonexistingParentId
+    case errorNonexistingTokenSignSlot
+    case errorWrongNonceSize
+    case errorCsrAlreadySigned
+    case errorCertAlreadyPlaced
+    case errorCertValidationFailed
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.Int)
+    #endif
+    public typealias AllCases = [ThingRPC.ThingRPCProvisioningObject.KnownStatusCode]
+    public typealias RawValue = Swift.Int
+    nonisolated public static var allCases: [ThingRPC.ThingRPCProvisioningObject.KnownStatusCode] {
+      get
+    }
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public struct SimpleStatusResponse : Swift.Decodable, Swift.Equatable {
+    public var statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode
+    public init(statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode)
+    public static func == (a: ThingRPC.ThingRPCProvisioningObject.SimpleStatusResponse, b: ThingRPC.ThingRPCProvisioningObject.SimpleStatusResponse) -> Swift.Bool
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct SlotID : Swift.Encodable, Swift.Equatable {
+    public init(_ slot: Swift.UInt32)
+    public func encode(to encoder: any Swift.Encoder) throws
+    public static func == (a: ThingRPC.ThingRPCProvisioningObject.SlotID, b: ThingRPC.ThingRPCProvisioningObject.SlotID) -> Swift.Bool
+  }
+}
+extension ThingRPC.ThingRPCProvisioningObject {
+  public enum GenerateKeysAndToken : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCProvisioningObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var sourceType: ThingRPC.ThingRPCProvisioningObject.KeySourceType
+      public var usageFlags: ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags
+      public var tokenCredentials: ThingRPC.ThingRPCProvisioningObject.KeyReturn
+      public var slotId: ThingRPC.ThingRPCProvisioningObject.SlotID
+      public var nonce: Foundation.Data
+      public var parentId: ThingRPC.ThingRPCProvisioningObject.SlotID?
+      #if compiler(>=5.3) && $NonescapableTypes
+      public init(sourceType: ThingRPC.ThingRPCProvisioningObject.KeySourceType, usageFlags: ThingRPC.ThingRPCProvisioningObject.KeyUsageFlags, tokenCredentials: ThingRPC.ThingRPCProvisioningObject.KeyReturn, slotId: ThingRPC.ThingRPCProvisioningObject.SlotID, nonce: Foundation.Data, parentId: ThingRPC.ThingRPCProvisioningObject.SlotID? = nil)
+      #endif
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.GenerateKeysAndToken.RequestParams, b: ThingRPC.ThingRPCProvisioningObject.GenerateKeysAndToken.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var eat: Foundation.Data
+      public var statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode
+      public init(eat: Foundation.Data, statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.GenerateKeysAndToken.ResponseParams, b: ThingRPC.ThingRPCProvisioningObject.GenerateKeysAndToken.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum SignPayload : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCProvisioningObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var slotId: ThingRPC.ThingRPCProvisioningObject.SlotID
+      public var payload: Foundation.Data
+      public init(slotId: ThingRPC.ThingRPCProvisioningObject.SlotID, payload: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.SignPayload.RequestParams, b: ThingRPC.ThingRPCProvisioningObject.SignPayload.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public var signature: Foundation.Data
+      public var statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode
+      public init(signature: Foundation.Data, statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.SignPayload.ResponseParams, b: ThingRPC.ThingRPCProvisioningObject.SignPayload.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum PlaceCertificate : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCProvisioningObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var slotId: ThingRPC.ThingRPCProvisioningObject.SlotID
+      public var certificate: Foundation.Data
+      public init(slotId: ThingRPC.ThingRPCProvisioningObject.SlotID, certificate: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.PlaceCertificate.RequestParams, b: ThingRPC.ThingRPCProvisioningObject.PlaceCertificate.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCProvisioningObject.SimpleStatusResponse
+  }
+  public enum RemoveSlot : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCProvisioningObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var slotId: Foundation.Data
+      public init(slotId: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.RemoveSlot.RequestParams, b: ThingRPC.ThingRPCProvisioningObject.RemoveSlot.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCProvisioningObject.SimpleStatusResponse
+  }
+  public enum WrappedKeyImport : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCProvisioningObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var wrappedKey: Foundation.Data
+      public init(wrappedKey: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.WrappedKeyImport.RequestParams, b: ThingRPC.ThingRPCProvisioningObject.WrappedKeyImport.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCProvisioningObject.SimpleStatusResponse
+  }
+  public enum GenericToken : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCProvisioningObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public enum Source : Swift.Int, Swift.Encodable {
+        case cpu
+        case sam
+        #if compiler(>=5.3) && $NonescapableTypes
+        public init?(rawValue: Swift.Int)
+        #endif
+        public typealias RawValue = Swift.Int
+        public var rawValue: Swift.Int {
+          get
+        }
+      }
+      public init(sourceType: ThingRPC.ThingRPCProvisioningObject.GenericToken.RequestParams.Source, nonce: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCProvisioningObject.GenericToken.RequestParams, b: ThingRPC.ThingRPCProvisioningObject.GenericToken.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public struct ResponseParams : Swift.Decodable {
+      public var eat: Foundation.Data
+      public var statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode
+      public init(eat: Foundation.Data, statusCode: ThingRPC.ThingRPCProvisioningObject.StatusCode)
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+}
+@frozen public enum ThingRPCResponse<ResponseType> {
+  case success(ResponseType)
+  case error(ThingRPC.ThingRPCConversationError)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var response: ResponseType? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var error: ThingRPC.ThingRPCConversationError? {
+    get
+  }
+  #endif
+}
+public enum ThingRPCSessionObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum Close : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCSessionObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public struct PermissionsResponse : Swift.Decodable, Swift.Equatable {
+    public let permissions: ThingRPC.ThingRPCPermissionList
+    public static func == (a: ThingRPC.ThingRPCSessionObject.PermissionsResponse, b: ThingRPC.ThingRPCSessionObject.PermissionsResponse) -> Swift.Bool
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum Login : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCSessionObject
+    public typealias RequestParams = ThingRPC.SignedChain
+    public typealias ResponseParams = ThingRPC.ThingRPCSessionObject.PermissionsResponse
+  }
+  public enum GetMyPermissions : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCSessionObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCSessionObject.PermissionsResponse
+  }
+}
+public enum ThingRPCSmartDoorLockObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+}
+public struct ThingRPCSwiftGenerator {
+  public enum AccessLevel : Swift.String {
+    case `public`
+    case `internal`
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var accessLevel: ThingRPC.ThingRPCSwiftGenerator.AccessLevel
+  public func generateSwiftFromThingMeta(manager: any ThingRPC.ThingRPCConversationManagerProtocol, onCompletion: @escaping (ThingRPC.ThingRPCResponse<Swift.String>) -> Swift.Void)
+  public func generateSwiftFromObjectMeta<T>(_ object: T.Type, manager: any ThingRPC.ThingRPCConversationManagerProtocol, onResponse: @escaping (ThingRPC.ThingRPCResponse<Swift.String>) -> Swift.Void) where T : ThingRPC.ThingRPCObject
+}
+public enum ThingRPCThingObject : ThingRPC.ThingRPCObject {
+  public static var name: Swift.String
+  public static var types: [ThingRPC.ThingRPCObjectType]
+  public enum GetInfo : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public let description: Swift.String
+      public let isUnclaimed: Swift.Bool
+      public let name: Swift.String
+      public let protVersion: ThingRPC.ProtocolVersion
+      public let pub: Foundation.Data
+      public let thingPermissions: [ThingRPC.ThingRPCThingPermission]
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetInfo.ResponseParams, b: ThingRPC.ThingRPCThingObject.GetInfo.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum SetName : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var description: Swift.String
+      public var name: Swift.String
+      public init(name: Swift.String, description: Swift.String)
+      public static func == (a: ThingRPC.ThingRPCThingObject.SetName.RequestParams, b: ThingRPC.ThingRPCThingObject.SetName.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public struct TimeParams : Swift.Codable, Swift.Equatable {
+    public var time: Foundation.Date
+    public init(time: Foundation.Date)
+    public init(from decoder: any Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public static func == (a: ThingRPC.ThingRPCThingObject.TimeParams, b: ThingRPC.ThingRPCThingObject.TimeParams) -> Swift.Bool
+  }
+  public enum SetTime : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCThingObject.TimeParams
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum GetTime : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCThingObject.TimeParams
+  }
+  public enum GetObjects : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public struct Object : Swift.Decodable, Swift.Equatable {
+        public let name: Swift.String
+        public let types: [ThingRPC.ThingRPCObjectType]
+        public init(name: Swift.String, types: [ThingRPC.ThingRPCObjectType])
+        public static func == (a: ThingRPC.ThingRPCThingObject.GetObjects.ResponseParams.Object, b: ThingRPC.ThingRPCThingObject.GetObjects.ResponseParams.Object) -> Swift.Bool
+        public init(from decoder: any Swift.Decoder) throws
+      }
+      public let objects: [ThingRPC.ThingRPCThingObject.GetObjects.ResponseParams.Object]
+      public init(objects: [ThingRPC.ThingRPCThingObject.GetObjects.ResponseParams.Object])
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetObjects.ResponseParams, b: ThingRPC.ThingRPCThingObject.GetObjects.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum GetProfiles : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public struct Profile : Swift.Decodable, Swift.Equatable {
+        public let name: Swift.String
+        public let version: ThingRPC.ProtocolVersion
+        public static func == (a: ThingRPC.ThingRPCThingObject.GetProfiles.ResponseParams.Profile, b: ThingRPC.ThingRPCThingObject.GetProfiles.ResponseParams.Profile) -> Swift.Bool
+        public init(from decoder: any Swift.Decoder) throws
+      }
+      public let profiles: [ThingRPC.ThingRPCThingObject.GetProfiles.ResponseParams.Profile]
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetProfiles.ResponseParams, b: ThingRPC.ThingRPCThingObject.GetProfiles.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum Claim : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var name: Swift.String
+      public var pub: Foundation.Data
+      public var time: ThingRPC.EpochDate
+      public init(name: Swift.String, pub: Foundation.Data, time: ThingRPC.EpochDate)
+      public static func == (a: ThingRPC.ThingRPCThingObject.Claim.RequestParams, b: ThingRPC.ThingRPCThingObject.Claim.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum PutUser : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var name: Swift.String
+      public var permissions: [ThingRPC.ThingRPCUserPermission]
+      public var pub: Foundation.Data
+      public var time: ThingRPC.EpochDate
+      public init(name: Swift.String, permissions: [ThingRPC.ThingRPCUserPermission], pub: Foundation.Data, time: ThingRPC.EpochDate)
+      public static func == (a: ThingRPC.ThingRPCThingObject.PutUser.RequestParams, b: ThingRPC.ThingRPCThingObject.PutUser.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum GetUsers : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var max: Swift.Int?
+      public var next: Foundation.Data?
+      #if compiler(>=5.3) && $NonescapableTypes
+      public init(max: Swift.Int?, next: Foundation.Data?)
+      #endif
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetUsers.RequestParams, b: ThingRPC.ThingRPCThingObject.GetUsers.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public let next: Foundation.Data?
+      public struct User : Swift.Decodable, Swift.Equatable {
+        public let name: Swift.String
+        public let pub: Foundation.Data
+        public static func == (a: ThingRPC.ThingRPCThingObject.GetUsers.ResponseParams.User, b: ThingRPC.ThingRPCThingObject.GetUsers.ResponseParams.User) -> Swift.Bool
+        public init(from decoder: any Swift.Decoder) throws
+      }
+      public let users: [ThingRPC.ThingRPCThingObject.GetUsers.ResponseParams.User]
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetUsers.ResponseParams, b: ThingRPC.ThingRPCThingObject.GetUsers.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public struct UserPubRequestParams : Swift.Encodable, Swift.Equatable {
+    public var pub: Foundation.Data
+    public init(pub: Foundation.Data)
+    public static func == (a: ThingRPC.ThingRPCThingObject.UserPubRequestParams, b: ThingRPC.ThingRPCThingObject.UserPubRequestParams) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+  }
+  public struct RemoveResponseParams : Swift.Decodable, Swift.Equatable {
+    public let removed: Swift.Bool
+    public init(removed: Swift.Bool)
+    public static func == (a: ThingRPC.ThingRPCThingObject.RemoveResponseParams, b: ThingRPC.ThingRPCThingObject.RemoveResponseParams) -> Swift.Bool
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum GetUser : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCThingObject.UserPubRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public struct CreatedBy : Swift.Decodable, Swift.Equatable {
+        public let name: Swift.String
+        public let pub: Foundation.Data
+        public let thingTime: ThingRPC.EpochDate
+        public let time: ThingRPC.EpochDate
+        public static func == (a: ThingRPC.ThingRPCThingObject.GetUser.ResponseParams.CreatedBy, b: ThingRPC.ThingRPCThingObject.GetUser.ResponseParams.CreatedBy) -> Swift.Bool
+        public init(from decoder: any Swift.Decoder) throws
+      }
+      public let createdBy: ThingRPC.ThingRPCThingObject.GetUser.ResponseParams.CreatedBy
+      public let name: Swift.String
+      public let permissions: [ThingRPC.ThingRPCUserPermission]
+      public let pub: Foundation.Data
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetUser.ResponseParams, b: ThingRPC.ThingRPCThingObject.GetUser.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+  public enum RemoveUser : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCThingObject.UserPubRequestParams
+    public typealias ResponseParams = ThingRPC.ThingRPCThingObject.RemoveResponseParams
+  }
+  public struct BlockListItem : Swift.Codable, Swift.Equatable {
+    public var data: Foundation.Data
+    public var expire: ThingRPC.EpochDate
+    public enum BlocklistItemType : Swift.String, Swift.Codable {
+      case key
+      case signature
+      public init(from decoder: any Swift.Decoder) throws
+      #if compiler(>=5.3) && $NonescapableTypes
+      public init?(rawValue: Swift.String)
+      #endif
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public var type: ThingRPC.ThingRPCThingObject.BlockListItem.BlocklistItemType
+    public init(data: Foundation.Data, expire: ThingRPC.EpochDate, type: ThingRPC.ThingRPCThingObject.BlockListItem.BlocklistItemType)
+    public static func == (a: ThingRPC.ThingRPCThingObject.BlockListItem, b: ThingRPC.ThingRPCThingObject.BlockListItem) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum AddBlocklistElement : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCThingObject.BlockListItem
+    public typealias ResponseParams = ThingRPC.ThingRPCEmptyResponseParams
+  }
+  public enum RemoveBlocklistElement : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public struct RequestParams : Swift.Encodable, Swift.Equatable {
+      public var data: Foundation.Data
+      public init(data: Foundation.Data)
+      public static func == (a: ThingRPC.ThingRPCThingObject.RemoveBlocklistElement.RequestParams, b: ThingRPC.ThingRPCThingObject.RemoveBlocklistElement.RequestParams) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+    }
+    public typealias ResponseParams = ThingRPC.ThingRPCThingObject.RemoveResponseParams
+  }
+  public enum GetBlocklist : ThingRPC.ThingRPCCallConversation {
+    public static var name: Swift.String
+    public typealias Object = ThingRPC.ThingRPCThingObject
+    public typealias RequestParams = ThingRPC.ThingRPCEmptyRequestParams
+    public struct ResponseParams : Swift.Decodable, Swift.Equatable {
+      public let blocklist: [ThingRPC.ThingRPCThingObject.BlockListItem]
+      public static func == (a: ThingRPC.ThingRPCThingObject.GetBlocklist.ResponseParams, b: ThingRPC.ThingRPCThingObject.GetBlocklist.ResponseParams) -> Swift.Bool
+      public init(from decoder: any Swift.Decoder) throws
+    }
+  }
+}
+public typealias ThingRPCTimeMS = Swift.Int64
+public typealias ThingRPCTimeMinutes = Swift.Int32
+extension Foundation.Date {
+  public var thingRPCTimeMS: ThingRPC.ThingRPCTimeMS {
+    get
+  }
+  public var thingRPCTimeMinutes: ThingRPC.ThingRPCTimeMinutes {
+    get
+  }
+  public init(thingRPCTimeMS: ThingRPC.ThingRPCTimeMS)
+  public init(thingRPCTimeMinutes: ThingRPC.ThingRPCTimeMinutes)
+}
+extension Swift.Double {
+  public static func fromThingRPCTimeMS(_ thingRPCTimeMS: ThingRPC.ThingRPCTimeMS) -> Foundation.TimeInterval
+  public static func fromThingRPCTimeMinutes(_ thingRPCTimeMinutes: ThingRPC.ThingRPCTimeMinutes) -> Foundation.TimeInterval
+}
+extension Swift.Int64 {
+  public static func fromTimeInterval(_ timeInterval: Foundation.TimeInterval) -> ThingRPC.ThingRPCTimeMS
+}
+extension Swift.Int32 {
+  public static func fromTimeInterval(_ timeInterval: Foundation.TimeInterval) -> ThingRPC.ThingRPCTimeMinutes
+}
+public enum TimeConstraintError : Swift.Error {
+  case outOfRange(debugDescription: Swift.String)
+  case invalidData(debugDescription: Swift.String)
+}
+public struct TimeConstraint : Swift.Codable, Swift.Equatable {
+  public static let always: ThingRPC.TimeConstraint
+  public static let never: ThingRPC.TimeConstraint
+  public static let week: Swift.Int32
+  public var begin: Foundation.Date {
+    get
+  }
+  public var end: Foundation.Date {
+    get
+  }
+  public var intervals: [ThingRPC.TimeConstraint.Interval]
+  public init(begin: Foundation.Date, end: Foundation.Date, intervals: [ThingRPC.TimeConstraint.Interval] = []) throws
+  public static func createUntil(_ end: Foundation.Date) throws -> ThingRPC.TimeConstraint
+  public func isValid(_ time: Foundation.Date) -> Swift.Bool
+  public func isNever() -> Swift.Bool
+  public func isExpired(_ time: Foundation.Date) -> Swift.Bool
+  public func intersectMainInterval(other: ThingRPC.TimeConstraint) -> ThingRPC.TimeConstraint
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: ThingRPC.TimeConstraint, b: ThingRPC.TimeConstraint) -> Swift.Bool
+}
+extension ThingRPC.TimeConstraint {
+  public struct Interval : Swift.Equatable {
+    public let begin: Swift.UInt32
+    public let duration: Swift.UInt16
+    public let repetitions: Swift.UInt8
+    public init(begin: Swift.UInt32, duration: Swift.UInt16, repetitions: Swift.UInt8) throws
+    public static func == (a: ThingRPC.TimeConstraint.Interval, b: ThingRPC.TimeConstraint.Interval) -> Swift.Bool
+  }
+}
+extension ThingRPC.CryptoLibError : Swift.Equatable {}
+extension ThingRPC.CryptoLibError : Swift.Hashable {}
+extension ThingRPC.ThingRPCGetConMetaResponse.ConversationType : Swift.Hashable {}
+extension ThingRPC.ThingRPCGetConMetaResponse.ConversationType : Swift.RawRepresentable {}
+extension ThingRPC.SignedChainError : Swift.Equatable {}
+extension ThingRPC.SignedChainError : Swift.Hashable {}
+extension ThingRPC.StreamChannelError : Swift.Equatable {}
+extension ThingRPC.StreamChannelError : Swift.Hashable {}
+extension ThingRPC.ThingRPCBasicLockProfilleObject.AccessState : Swift.Hashable {}
+extension ThingRPC.ThingRPCDelegationError : Swift.Equatable {}
+extension ThingRPC.ThingRPCDelegationError : Swift.Hashable {}
+extension ThingRPC.ThingRPCFirmwareObject.ApplyUpgradeState : Swift.Equatable {}
+extension ThingRPC.ThingRPCFirmwareObject.ApplyUpgradeState : Swift.Hashable {}
+extension ThingRPC.ThingRPCFirmwareObject.ApplyUpgradeState : Swift.RawRepresentable {}
+extension ThingRPC.ThingRPCProvisioningObject.KeyReturn : Swift.Equatable {}
+extension ThingRPC.ThingRPCProvisioningObject.KeyReturn : Swift.Hashable {}
+extension ThingRPC.ThingRPCProvisioningObject.KeyReturn : Swift.RawRepresentable {}
+extension ThingRPC.ThingRPCProvisioningObject.KeySourceType : Swift.Equatable {}
+extension ThingRPC.ThingRPCProvisioningObject.KeySourceType : Swift.Hashable {}
+extension ThingRPC.ThingRPCProvisioningObject.KeySourceType : Swift.RawRepresentable {}
+extension ThingRPC.ThingRPCProvisioningObject.KnownStatusCode : Swift.Equatable {}
+extension ThingRPC.ThingRPCProvisioningObject.KnownStatusCode : Swift.Hashable {}
+extension ThingRPC.ThingRPCProvisioningObject.KnownStatusCode : Swift.RawRepresentable {}
+extension ThingRPC.ThingRPCProvisioningObject.GenericToken.RequestParams.Source : Swift.Equatable {}
+extension ThingRPC.ThingRPCProvisioningObject.GenericToken.RequestParams.Source : Swift.Hashable {}
+extension ThingRPC.ThingRPCProvisioningObject.GenericToken.RequestParams.Source : Swift.RawRepresentable {}
+extension ThingRPC.ThingRPCSwiftGenerator.AccessLevel : Swift.Equatable {}
+extension ThingRPC.ThingRPCSwiftGenerator.AccessLevel : Swift.Hashable {}
+extension ThingRPC.ThingRPCSwiftGenerator.AccessLevel : Swift.RawRepresentable {}
+extension ThingRPC.ThingRPCThingObject.BlockListItem.BlocklistItemType : Swift.Equatable {}
+extension ThingRPC.ThingRPCThingObject.BlockListItem.BlocklistItemType : Swift.Hashable {}
+extension ThingRPC.ThingRPCThingObject.BlockListItem.BlocklistItemType : Swift.RawRepresentable {}

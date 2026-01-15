@@ -12,7 +12,7 @@ target 'GarageOpenerDemo' do
   use_frameworks!
   
   # Path to the Abloy Mobile SDK which is in the parent directory
-  sdk_path = '../abloy-mobile-sdk-ios-2.0.1'
+  sdk_path = '../abloy-mobile-sdk-ios-2.1.0'
   
   # Add the Abloy SDK with configuration-specific variants
   pod 'AbloyCuBeMobileSDK-Debug', :configuration => ['Debug'], :path => sdk_path

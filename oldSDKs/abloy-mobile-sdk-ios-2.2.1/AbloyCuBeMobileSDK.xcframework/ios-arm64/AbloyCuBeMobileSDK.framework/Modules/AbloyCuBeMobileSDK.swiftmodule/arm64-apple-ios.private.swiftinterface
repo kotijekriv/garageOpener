@@ -1,0 +1,931 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-upcoming-feature StrictConcurrency -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name AbloyCuBeMobileSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+@_exported import AbloyCuBeMobileSDK
+import BackgroundTasks
+import CBORCoding
+import Combine
+import CoreBluetooth
+import CoreData
+import DatadogCore
+import DatadogLogs
+import Foundation
+import MobileConnector
+import OSLog
+import SeosMobileKeysSDK
+import Swift
+import ThingRPC
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers final public class AbloyMobileSDK : @unchecked Swift.Sendable {
+  @objc deinit
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockCertificateEventStreaming {
+  final public func getLockCertificateEvents() -> _Concurrency.AsyncStream<AbloyCuBeMobileSDK.LockingDeviceCertificateEvent>
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockEventStreaming {
+  final public func getLockEvents() -> _Concurrency.AsyncStream<AbloyCuBeMobileSDK.LockingDeviceEvent>
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  @available(*, unavailable, message: "Replaced by API specific failures (for example `AccessFetchingFailure`)")
+  public enum Error : Swift.Error, Foundation.LocalizedError {
+    case alreadyInitialized
+    case notInitialized
+    case initializeFailed
+    case protectedDataNotAvailable
+    case operatingDevicePotentiallyDeactivated
+    case operatingDeviceInactive
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var errorDescription: Swift.String? {
+      get
+    }
+    #endif
+    public static func == (a: AbloyCuBeMobileSDK.AbloyMobileSDK.Error, b: AbloyCuBeMobileSDK.AbloyMobileSDK.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public struct Access : Swift.Codable, Swift.Sendable, Swift.Equatable {
+  public let lockID: Foundation.UUID
+  public let title: Swift.String
+  public let start: Foundation.Date
+  public let end: Foundation.Date
+  public let publicKeyBytes: Foundation.Data
+  public let permissions: [AbloyCuBeMobileSDK.Permission]
+  public let lockingDeviceType: AbloyCuBeMobileSDK.LockingDeviceType
+  public init(lockID: Foundation.UUID, title: Swift.String, start: Foundation.Date, end: Foundation.Date, publicKeyBytes: Foundation.Data, permissions: [AbloyCuBeMobileSDK.Permission] = [], lockingDeviceType: AbloyCuBeMobileSDK.LockingDeviceType = .unknown)
+  public static func == (a: AbloyCuBeMobileSDK.Access, b: AbloyCuBeMobileSDK.Access) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@frozen public enum Permission : Swift.String, Swift.Codable, Swift.Sendable, Swift.Equatable {
+  case unknown
+  case open
+  case updateFirmware
+  case updateTime
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol AccessFetching : Swift.Sendable {
+  func fetchAccesses() async throws -> AbloyCuBeMobileSDK.AccessResult
+}
+@frozen public enum AccessResult {
+  case accessFetchedFromBackend([AbloyCuBeMobileSDK.Access])
+  case accessFetchedFromLocalDatabase([AbloyCuBeMobileSDK.Access])
+}
+extension AbloyCuBeMobileSDK.AccessResult {
+  public var accesses: [AbloyCuBeMobileSDK.Access] {
+    get
+  }
+}
+public struct AccessFetchingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.AccessFetchingFailure, b: AbloyCuBeMobileSDK.AccessFetchingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.AccessFetchingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason, b: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.AccessFetchingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason
+  public static let unauthorized: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason
+  public static let operatingDeviceInactive: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.AccessFetchingFailure.Reason
+}
+public protocol BackgroundSyncEnabling {
+  @discardableResult
+  func enableBackgroundSync() -> Swift.Bool
+}
+@frozen public enum CertificateState : Swift.Sendable {
+  case upToDate
+  case pending
+  case issuing
+  case readyForInstall
+  public static func == (a: AbloyCuBeMobileSDK.CertificateState, b: AbloyCuBeMobileSDK.CertificateState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ClaimableLock : Swift.Hashable {
+  public let lockId: Foundation.UUID
+  public let name: Swift.String
+  public init(lockId: Foundation.UUID, name: Swift.String)
+  public static func == (a: AbloyCuBeMobileSDK.ClaimableLock, b: AbloyCuBeMobileSDK.ClaimableLock) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ClaimableLockFetching : Swift.Sendable {
+  func fetchClaimableLocks(page: Swift.Int, size: Swift.Int) async throws -> [AbloyCuBeMobileSDK.ClaimableLock]
+}
+public struct ClaimableLockFetchingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure, b: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.ClaimableLockFetchingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason, b: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason
+  public static let networkFailure: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason
+  public static let unauthorized: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.ClaimableLockFetchingFailure.Reason
+}
+public struct ConnectedLock : Swift.Sendable, Swift.Equatable {
+  public let hardwareID: Foundation.UUID
+  public let name: Swift.String
+  public let publicKeyBytes: Foundation.Data
+  public let time: Swift.Int64
+  public let batteryLevel: AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel
+  public let firmwareVersion: Swift.String
+  public let hardwareVersion: Swift.String
+  public let initialLockState: AbloyCuBeMobileSDK.LockState
+  public let type: AbloyCuBeMobileSDK.LockingDeviceType
+  public init(hardwareID: Foundation.UUID, name: Swift.String = "unknown", publicKeyBytes: Foundation.Data, time: Swift.Int64 = .zero, batteryLevel: AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel = .unknown, firmwareVersion: Swift.String = "unknown", hardwareVersion: Swift.String = "unknown", initialLockState: AbloyCuBeMobileSDK.LockState = .unknown, type: AbloyCuBeMobileSDK.LockingDeviceType = .unknown)
+  @frozen public enum BatteryLevel : Swift.Sendable {
+    case low
+    case high
+    case unknown
+    public static func == (a: AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel, b: AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func == (a: AbloyCuBeMobileSDK.ConnectedLock, b: AbloyCuBeMobileSDK.ConnectedLock) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.ConnectedLock : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public protocol DiagnosticsConsentGetting : Swift.Sendable {
+  func getDiagnosticsConsent() -> Swift.Bool
+}
+public protocol DiagnosticsConsentSetting : Swift.Sendable {
+  func setDiagnosticsConsent(_ granted: Swift.Bool)
+}
+public protocol DiagnosticsIDGetting : Swift.Sendable {
+  func getDiagnosticsID() -> Foundation.UUID
+}
+public struct DiscoveredLock : Swift.Sendable {
+  public let hardwareID: Foundation.UUID
+  public let publicKeyBytes: Foundation.Data
+  public let isClaimed: Swift.Bool
+  public let name: Swift.String?
+  public let accesses: [AbloyCuBeMobileSDK.Access]
+  public let certificateState: AbloyCuBeMobileSDK.CertificateState
+  public let type: AbloyCuBeMobileSDK.LockingDeviceType
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(hardwareID: Foundation.UUID, publicKeyBytes: Foundation.Data, isClaimed: Swift.Bool, name: Swift.String? = nil, accesses: [AbloyCuBeMobileSDK.Access] = [], certificateState: AbloyCuBeMobileSDK.CertificateState = .upToDate, type: AbloyCuBeMobileSDK.LockingDeviceType = .unknown)
+  #endif
+}
+extension AbloyCuBeMobileSDK.DiscoveredLock : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: AbloyCuBeMobileSDK.DiscoveredLock, b: AbloyCuBeMobileSDK.DiscoveredLock) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@frozen public enum FirmwareCheckResult {
+  case upToDate
+  case updateAvailable(Swift.String)
+}
+public struct FirmwareTransferProgress : Swift.Sendable {
+  public let percentage: Swift.Double
+  public let currentByteCount: Swift.Int
+  public let totalByteCount: Swift.Int
+  public init(currentByteCount: Swift.Int, totalByteCount: Swift.Int)
+}
+@available(*, unavailable, renamed: "FirmwareUpdateCheckingFailure", message: "For case `invalidCurrentFirmwareVersion`, use `FirmwareUpdateCheckingFailure(reason: .invalidCurrentFirmwareVersion)` instead. This will be removed in a future version")
+public enum FirmwareUpdateCheckError : Swift.Error {
+  case invalidCurrentFirmwareVersion
+  public static func == (a: AbloyCuBeMobileSDK.FirmwareUpdateCheckError, b: AbloyCuBeMobileSDK.FirmwareUpdateCheckError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol FirmwareUpdateChecking : Swift.Sendable {
+  func checkFirmwareUpdate(for connectedLock: AbloyCuBeMobileSDK.ConnectedLock) async throws -> AbloyCuBeMobileSDK.FirmwareCheckResult
+}
+public struct FirmwareUpdateCheckingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure, b: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason, b: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+  public static let invalidCurrentFirmwareVersion: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+  public static let unauthorized: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+  public static let networkFailure: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+  public static let notConnected: AbloyCuBeMobileSDK.FirmwareUpdateCheckingFailure.Reason
+}
+@available(*, unavailable, renamed: "FirmwareUpdatingFailure")
+public struct FirmwareUpdateError : Swift.Error, Foundation.LocalizedError, Swift.Equatable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public static func == (a: AbloyCuBeMobileSDK.FirmwareUpdateError, b: AbloyCuBeMobileSDK.FirmwareUpdateError) -> Swift.Bool
+}
+@frozen public enum FirmwareUpdateStatus : Swift.Sendable {
+  case downloadingFirmware
+  case preparingFileTransfer
+  case transferringFirmware(AbloyCuBeMobileSDK.FirmwareTransferProgress)
+}
+public protocol FirmwareUpdating : Swift.Sendable {
+  func updateFirmware(for connectedLock: AbloyCuBeMobileSDK.ConnectedLock) -> _Concurrency.AsyncThrowingStream<AbloyCuBeMobileSDK.FirmwareUpdateStatus, any Swift.Error>
+}
+public struct FirmwareUpdatingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.FirmwareUpdatingFailure, b: AbloyCuBeMobileSDK.FirmwareUpdatingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.FirmwareUpdatingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason, b: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+  public static let unauthorized: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+  public static let missingPermissions: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+  public static let missingFirmwareInfo: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+  public static let notConnected: AbloyCuBeMobileSDK.FirmwareUpdatingFailure.Reason
+}
+extension AbloyCuBeMobileSDK.InvitationCode {
+  public enum Error : Swift.Error {
+    case invalidInvitationCode
+    case emptyInvitationCode
+    public static func == (a: AbloyCuBeMobileSDK.InvitationCode.Error, b: AbloyCuBeMobileSDK.InvitationCode.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol OperatingDeviceInvitation {
+}
+public struct Invitation : Swift.Equatable, AbloyCuBeMobileSDK.OperatingDeviceInvitation {
+  public let invitationCode: AbloyCuBeMobileSDK.InvitationCode
+  public let environmentURL: Foundation.URL
+  public init(invitationCode: AbloyCuBeMobileSDK.InvitationCode, environmentURL: Foundation.URL)
+  public static func == (a: AbloyCuBeMobileSDK.Invitation, b: AbloyCuBeMobileSDK.Invitation) -> Swift.Bool
+}
+public struct InvitationCode : Swift.Equatable, AbloyCuBeMobileSDK.OperatingDeviceInvitation {
+  public let code: Swift.String
+  public init(code: Swift.String) throws
+  @available(*, unavailable, message: "This method has been removed in SDK 2.0. Invitation code validation is done internally in SDK")
+  public static func isValid(code: Swift.String) -> Swift.Bool
+  public static func == (a: AbloyCuBeMobileSDK.InvitationCode, b: AbloyCuBeMobileSDK.InvitationCode) -> Swift.Bool
+}
+@available(*, unavailable, renamed: "LockingDeviceCertificateStateChange")
+public enum LockCertificateEvent {
+}
+public protocol LockCertificateEventStreaming : Swift.Sendable {
+  func getLockCertificateEvents() -> _Concurrency.AsyncStream<AbloyCuBeMobileSDK.LockingDeviceCertificateEvent>
+}
+public protocol LockClaiming : Swift.Sendable {
+  func claim(connectedLock: AbloyCuBeMobileSDK.ConnectedLock, with claimableLock: AbloyCuBeMobileSDK.ClaimableLock) async throws
+}
+public struct LockClaimingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.LockClaimingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.LockClaimingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.LockClaimingFailure, b: AbloyCuBeMobileSDK.LockClaimingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.LockClaimingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.LockClaimingFailure.Reason, b: AbloyCuBeMobileSDK.LockClaimingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.LockClaimingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.LockClaimingFailure.Reason
+  public static let unauthorized: AbloyCuBeMobileSDK.LockClaimingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.LockClaimingFailure.Reason
+}
+public protocol LockConnecting : Swift.Sendable {
+  func connect(to lock: AbloyCuBeMobileSDK.DiscoveredLock, onDisconnect: @escaping () -> Swift.Void) async throws -> AbloyCuBeMobileSDK.ConnectedLock
+}
+@available(*, unavailable, renamed: "LockConnectingFailure")
+public struct LockConnectingError : Swift.Error, Foundation.LocalizedError, Swift.Equatable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public static func == (a: AbloyCuBeMobileSDK.LockConnectingError, b: AbloyCuBeMobileSDK.LockConnectingError) -> Swift.Bool
+}
+public struct LockConnectingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.LockConnectingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.LockConnectingFailure, b: AbloyCuBeMobileSDK.LockConnectingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.LockConnectingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.LockConnectingFailure.Reason, b: AbloyCuBeMobileSDK.LockConnectingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.LockConnectingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public static let connectionSwitchFailure: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public static let rebootFailed: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public static let connectionProcessOngoing: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public static let connectionNotEstablished: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public static let consecutiveConnectionFailures: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.LockConnectingFailure.Reason
+}
+@available(*, unavailable, renamed: "LockingDeviceStateChange")
+@frozen public enum LockEvent {
+}
+@available(*, unavailable, renamed: "LockingDeviceOperationState")
+@frozen public enum LockOperationEvent {
+}
+@available(*, unavailable)
+@frozen public enum LockHandleState {
+}
+@available(*, unavailable, renamed: "LockingDeviceOverrideState")
+@frozen public enum LockOverrideState {
+}
+@available(*, unavailable, renamed: "LockingDeviceErrorState")
+@frozen public enum LockErrorState {
+}
+public protocol LockDisconnecting : Swift.Sendable {
+  func disconnectFromLock() async throws
+}
+public struct LockDisconnectingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.LockDisconnectingFailure, b: AbloyCuBeMobileSDK.LockDisconnectingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.LockDisconnectingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason, b: AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.LockDisconnectingFailure.Reason
+}
+public protocol LockDiscoveryStarting : Swift.Sendable {
+  @available(*, deprecated, message: "This api is deprecated and will be removed in future versions.\nUse `startLockDiscovery() -> AsyncStream<LockingDeviceDiscoveryEvent>` instead.")
+  func startLockDiscovery(onDiscovered: @escaping (_ lock: AbloyCuBeMobileSDK.DiscoveredLock) -> Swift.Void, onDisappeared: @escaping (_ lock: AbloyCuBeMobileSDK.DiscoveredLock) -> Swift.Void)
+  func startLockDiscovery() -> _Concurrency.AsyncStream<AbloyCuBeMobileSDK.LockingDeviceDiscoveryEvent>
+}
+public protocol LockDiscoveryStopping : Swift.Sendable {
+  func stopLockDiscovery()
+}
+public protocol LockEventStreaming : Swift.Sendable {
+  func getLockEvents() -> _Concurrency.AsyncStream<AbloyCuBeMobileSDK.LockingDeviceEvent>
+}
+public struct LockingDeviceCertificateEvent : Swift.Sendable, Swift.Equatable {
+  public let hardwareID: Foundation.UUID
+  public let newState: AbloyCuBeMobileSDK.LockingDeviceCertificateStateChange
+  public init(hardwareID: Foundation.UUID, newState: AbloyCuBeMobileSDK.LockingDeviceCertificateStateChange)
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceCertificateEvent, b: AbloyCuBeMobileSDK.LockingDeviceCertificateEvent) -> Swift.Bool
+}
+@frozen public enum LockingDeviceCertificateStateChange : Swift.Sendable, Swift.Equatable {
+  case requesting
+  case requestQueued
+  case installing
+  case lockingDeviceRebooting
+  case lockingDeviceRebooted
+  case lockingDeviceRebootingFailed
+  case failed
+  case certificateUpdateNotSupported
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceCertificateStateChange, b: AbloyCuBeMobileSDK.LockingDeviceCertificateStateChange) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@frozen public enum LockingDeviceDiscoveryEvent : Swift.Sendable {
+  case discovered(AbloyCuBeMobileSDK.DiscoveredLock)
+  case disappeared(AbloyCuBeMobileSDK.DiscoveredLock)
+}
+public struct LockingDeviceEvent : Swift.Sendable, Swift.Equatable {
+  public let hardwareID: Foundation.UUID
+  public let newState: AbloyCuBeMobileSDK.LockingDeviceStateChange
+  public init(hardwareID: Foundation.UUID, newState: AbloyCuBeMobileSDK.LockingDeviceStateChange)
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceEvent, b: AbloyCuBeMobileSDK.LockingDeviceEvent) -> Swift.Bool
+}
+@frozen public enum LockingDeviceStateChange : Swift.Equatable, Swift.Sendable {
+  case operationState(AbloyCuBeMobileSDK.LockingDeviceOperationState)
+  case overrideState(AbloyCuBeMobileSDK.LockingDeviceOverrideState)
+  case errorState(AbloyCuBeMobileSDK.LockingDeviceErrorState)
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceStateChange, b: AbloyCuBeMobileSDK.LockingDeviceStateChange) -> Swift.Bool
+}
+@frozen public enum LockingDeviceOperationState : Swift.Sendable {
+  case unknown
+  case locked
+  case locking
+  case unlocked
+  case unlocking
+  case jammed
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceOperationState, b: AbloyCuBeMobileSDK.LockingDeviceOperationState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@frozen public enum LockingDeviceOverrideState : Swift.Sendable {
+  case unknown
+  case open
+  case closed
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceOverrideState, b: AbloyCuBeMobileSDK.LockingDeviceOverrideState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@frozen public enum LockingDeviceErrorState : Swift.Sendable {
+  case noError
+  case analyzing
+  case runningBlindly
+  case sensorProblemResolved
+  case irreversiblyBroken
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceErrorState, b: AbloyCuBeMobileSDK.LockingDeviceErrorState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum LockingDeviceType : Swift.Codable, Swift.Sendable {
+  case unknown
+  case padlock
+  case controller
+  case keyDeposit
+  case swingHandle
+  public static func == (a: AbloyCuBeMobileSDK.LockingDeviceType, b: AbloyCuBeMobileSDK.LockingDeviceType) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_spi(Private) public protocol LockingDeviceKeepAliveStarting : Swift.Sendable {
+  @_spi(Private) func keepConnectionAlive(pingInterval: Swift.Int, maximumKeepAliveAttempts: Swift.Int) throws
+}
+@_spi(Private) public protocol LockingDeviceKeepAliveStopping : Swift.Sendable {
+  @_spi(Private) func stopLockKeepAlive() throws
+}
+@_spi(Private) public struct LockKeepAliveFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  @_spi(Private) public let reason: AbloyCuBeMobileSDK.LockKeepAliveFailure.Reason
+  @_spi(Private) public init(reason: AbloyCuBeMobileSDK.LockKeepAliveFailure.Reason)
+  @_spi(Private) public var description: Swift.String {
+    @_spi(Private) get
+  }
+  @_spi(Private) public static func == (a: AbloyCuBeMobileSDK.LockKeepAliveFailure, b: AbloyCuBeMobileSDK.LockKeepAliveFailure) -> Swift.Bool
+}
+@_spi(Private) extension AbloyCuBeMobileSDK.LockKeepAliveFailure {
+  @_spi(Private) public struct Reason : Swift.Equatable, Swift.Sendable {
+    @_spi(Private) public let message: Swift.String
+    @_spi(Private) public static func == (a: AbloyCuBeMobileSDK.LockKeepAliveFailure.Reason, b: AbloyCuBeMobileSDK.LockKeepAliveFailure.Reason) -> Swift.Bool
+  }
+}
+@_spi(Private) extension AbloyCuBeMobileSDK.LockKeepAliveFailure.Reason {
+  @_spi(Private) public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.LockKeepAliveFailure.Reason
+}
+public protocol LockLocking : Swift.Sendable {
+  func lock(connectedLock: AbloyCuBeMobileSDK.ConnectedLock) async throws
+}
+public struct LockLockingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.LockLockingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.LockLockingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.LockLockingFailure, b: AbloyCuBeMobileSDK.LockLockingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.LockLockingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.LockLockingFailure.Reason, b: AbloyCuBeMobileSDK.LockLockingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.LockLockingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.LockLockingFailure.Reason
+  public static let lockingTimeout: AbloyCuBeMobileSDK.LockLockingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.LockLockingFailure.Reason
+  public static let notConnected: AbloyCuBeMobileSDK.LockLockingFailure.Reason
+}
+@frozen public enum LockState : Swift.Int, Swift.Sendable {
+  case unknown
+  case locked
+  case locking
+  case unlocked
+  case unlocking
+  case jammed
+  public init(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol LockUnlocking : Swift.Sendable {
+  func unlock(connectedLock: AbloyCuBeMobileSDK.ConnectedLock) async throws
+}
+public struct LockUnlockingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.LockUnlockingFailure, b: AbloyCuBeMobileSDK.LockUnlockingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.LockUnlockingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason, b: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.LockUnlockingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason
+  public static let unlockingTimeout: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason
+  public static let notConnected: AbloyCuBeMobileSDK.LockUnlockingFailure.Reason
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.AccessFetching {
+  final public func fetchAccesses() async throws -> AbloyCuBeMobileSDK.AccessResult
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `fetchAccesses() async throws -> AccessResult`\ninstead.")
+  final public func fetchAccesses(completion: @escaping (Swift.Result<AbloyCuBeMobileSDK.AccessResult, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.BackgroundSyncEnabling {
+  @discardableResult
+  final public func enableBackgroundSync() -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.ClaimableLockFetching {
+  final public func fetchClaimableLocks(page: Swift.Int, size: Swift.Int) async throws -> [AbloyCuBeMobileSDK.ClaimableLock]
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `fetchClaimableLocks(page: Int, size: Int) async throws\n-> [ClaimableLock]` instead.")
+  final public func fetchClaimableLocks(page: Swift.Int, size: Swift.Int, completion: @escaping (Swift.Result<[AbloyCuBeMobileSDK.ClaimableLock], any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.DiagnosticsConsentGetting {
+  final public func getDiagnosticsConsent() -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.DiagnosticsConsentSetting {
+  final public func setDiagnosticsConsent(_ granted: Swift.Bool)
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.DiagnosticsIDGetting {
+  final public func getDiagnosticsID() -> Foundation.UUID
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.FirmwareUpdateChecking {
+  final public func checkFirmwareUpdate(for connectedLock: AbloyCuBeMobileSDK.ConnectedLock) async throws -> AbloyCuBeMobileSDK.FirmwareCheckResult
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.FirmwareUpdating {
+  final public func updateFirmware(for connectedLock: AbloyCuBeMobileSDK.ConnectedLock) -> _Concurrency.AsyncThrowingStream<AbloyCuBeMobileSDK.FirmwareUpdateStatus, any Swift.Error>
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockClaiming {
+  final public func claim(connectedLock: AbloyCuBeMobileSDK.ConnectedLock, with claimableLock: AbloyCuBeMobileSDK.ClaimableLock) async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `claim(connectedLock: ConnectedLock, with\nclaimableLock: ClaimableLock) async throws` instead.")
+  final public func claim(connectedLock: AbloyCuBeMobileSDK.ConnectedLock, with info: AbloyCuBeMobileSDK.ClaimableLock, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockConnecting {
+  final public func connect(to lock: AbloyCuBeMobileSDK.DiscoveredLock, onDisconnect: @escaping () -> Swift.Void) async throws -> AbloyCuBeMobileSDK.ConnectedLock
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `connect(to:onDisconnect:) async throws -> ConnectedLock`\ninstead.\nTo receive lock events, use `getLockEvents()`")
+  final public func connect(to lock: AbloyCuBeMobileSDK.DiscoveredLock, onConnect: @escaping (Swift.Result<AbloyCuBeMobileSDK.ConnectedLock, any Swift.Error>) -> Swift.Void, onDisconnect: @escaping () -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockDisconnecting {
+  final public func disconnectFromLock() async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `disconnectFromLock() async throws` instead.")
+  final public func disconnectFromLock(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockDiscoveryStarting {
+  final public func startLockDiscovery(onDiscovered: @escaping (AbloyCuBeMobileSDK.DiscoveredLock) -> Swift.Void, onDisappeared: @escaping (AbloyCuBeMobileSDK.DiscoveredLock) -> Swift.Void)
+  final public func startLockDiscovery() -> _Concurrency.AsyncStream<AbloyCuBeMobileSDK.LockingDeviceDiscoveryEvent>
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockDiscoveryStopping {
+  final public func stopLockDiscovery()
+}
+@_spi(Private) extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockingDeviceKeepAliveStarting {
+  @_spi(Private) final public func keepConnectionAlive(pingInterval: Swift.Int, maximumKeepAliveAttempts: Swift.Int) throws
+}
+@_spi(Private) extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockingDeviceKeepAliveStopping {
+  @_spi(Private) final public func stopLockKeepAlive() throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockLocking {
+  final public func lock(connectedLock: AbloyCuBeMobileSDK.ConnectedLock) async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `lock(connectedLock: ConnectedLock) async throws`\ninstead.")
+  final public func lock(connectedLock: AbloyCuBeMobileSDK.ConnectedLock, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.LockUnlocking {
+  final public func unlock(connectedLock: AbloyCuBeMobileSDK.ConnectedLock) async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `unlock(connectedLock: ConnectedLock) async throws`\ninstead.")
+  final public func unlock(connectedLock: AbloyCuBeMobileSDK.ConnectedLock, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `getOperatingDeviceActivationStatus() async throws -> OperatingDeviceActivationStatus` instead.")
+  final public func isOperatingDeviceActivated() throws -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.OperatingDeviceActivating {
+  final public func activateOperatingDevice(with invitation: any AbloyCuBeMobileSDK.OperatingDeviceInvitation) async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in SDK 2.0. Use the async version instead: try await activateOperatingDevice(with:))")
+  final public func activateOperatingDevice(with invitation: AbloyCuBeMobileSDK.Invitation, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGetting {
+  final public func getOperatingDeviceActivationStatus() async throws -> AbloyCuBeMobileSDK.OperatingDeviceActivationStatus
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.OperatingDeviceDeactivating {
+  final public func deactivateOperatingDevice() async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `deactivateOperatingDevice() async throws` instead.")
+  final public func deactivateOperatingDevice(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK : AbloyCuBeMobileSDK.SDKInitializing {
+  final public func initialize() async throws
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, unavailable, message: "This method has been removed in version 2.0.0. Use `initialize() async throws` instead.")
+  final public func initialize(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+}
+extension AbloyCuBeMobileSDK.AbloyMobileSDK {
+  public static let shared: AbloyCuBeMobileSDK.AbloyMobileSDK
+}
+public protocol OperatingDeviceActivating : Swift.Sendable {
+  func activateOperatingDevice(with invitation: any AbloyCuBeMobileSDK.OperatingDeviceInvitation) async throws
+}
+@available(*, unavailable, renamed: "OperatingDeviceActivatingFailure")
+public enum OperatingDeviceActivatingError : Swift.Error {
+  case activationOngoing
+  case deactivationOngoing
+  case alreadyActivated
+  public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceActivatingError, b: AbloyCuBeMobileSDK.OperatingDeviceActivatingError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct OperatingDeviceActivatingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure, b: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason, b: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let activationOngoing: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let deactivationOngoing: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let alreadyActivated: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let invalidInvitationCode: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let networkRequestFailed: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let keylessPlatformActivationFailed: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let invalidInvitationType: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.OperatingDeviceActivatingFailure.Reason
+}
+@frozen public enum OperatingDeviceActivationStatus {
+  case inactive
+  case activating
+  case active
+  public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceActivationStatus, b: AbloyCuBeMobileSDK.OperatingDeviceActivationStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol OperatingDeviceActivationStatusGetting : Swift.Sendable {
+  func getOperatingDeviceActivationStatus() async throws -> AbloyCuBeMobileSDK.OperatingDeviceActivationStatus
+}
+public struct OperatingDeviceActivationStatusGettingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure, b: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure.Reason, b: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure.Reason {
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.OperatingDeviceActivationStatusGettingFailure.Reason
+}
+public protocol OperatingDeviceDeactivating : Swift.Sendable {
+  func deactivateOperatingDevice() async throws
+}
+@available(*, unavailable, renamed: "OperatingDeviceDeactivatingFailure")
+public enum OperatingDeviceDeactivatingError : Swift.Error {
+  case deactivationOngoing
+  case activationOngoing
+  case alreadyDeactivated
+  case deactivatingFailed
+  public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingError, b: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct OperatingDeviceDeactivatingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure, b: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason, b: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason {
+  public static let internalFailure: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason
+  public static let activationOngoing: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason
+  public static let deactivationOngoing: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason
+  public static let alreadyDeactivated: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason
+  public static let sdkIsNotInitialized: AbloyCuBeMobileSDK.OperatingDeviceDeactivatingFailure.Reason
+}
+public protocol SDKInitializing {
+  func initialize() async throws
+}
+public struct SDKInitializingFailure : Swift.Error, Swift.Equatable, Swift.CustomStringConvertible, Swift.Sendable {
+  public let reason: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason
+  public init(reason: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: AbloyCuBeMobileSDK.SDKInitializingFailure, b: AbloyCuBeMobileSDK.SDKInitializingFailure) -> Swift.Bool
+}
+extension AbloyCuBeMobileSDK.SDKInitializingFailure {
+  public struct Reason : Swift.Equatable, Swift.Sendable {
+    public let message: Swift.String
+    public static func == (a: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason, b: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason) -> Swift.Bool
+  }
+}
+extension AbloyCuBeMobileSDK.SDKInitializingFailure.Reason {
+  public static let alreadyInitialized: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason
+  public static let protectedDataNotAvailable: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason
+  public static let internalFailure: AbloyCuBeMobileSDK.SDKInitializingFailure.Reason
+}
+@available(*, unavailable, message: "Replaced by API specific failures (for example `AccessFetchingFailure`)")
+extension AbloyCuBeMobileSDK.AbloyMobileSDK.Error : Swift.Equatable {}
+@available(*, unavailable, message: "Replaced by API specific failures (for example `AccessFetchingFailure`)")
+extension AbloyCuBeMobileSDK.AbloyMobileSDK.Error : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.Permission : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.Permission : Swift.RawRepresentable {}
+extension AbloyCuBeMobileSDK.Permission : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.AccessResult : Swift.Sendable {}
+extension AbloyCuBeMobileSDK.CertificateState : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.CertificateState : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.CertificateState : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.ConnectedLock.BatteryLevel : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.FirmwareCheckResult : Swift.Sendable {}
+@available(*, unavailable, renamed: "FirmwareUpdateCheckingFailure", message: "For case `invalidCurrentFirmwareVersion`, use `FirmwareUpdateCheckingFailure(reason: .invalidCurrentFirmwareVersion)` instead. This will be removed in a future version")
+extension AbloyCuBeMobileSDK.FirmwareUpdateCheckError : Swift.Equatable {}
+@available(*, unavailable, renamed: "FirmwareUpdateCheckingFailure", message: "For case `invalidCurrentFirmwareVersion`, use `FirmwareUpdateCheckingFailure(reason: .invalidCurrentFirmwareVersion)` instead. This will be removed in a future version")
+extension AbloyCuBeMobileSDK.FirmwareUpdateCheckError : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.InvitationCode.Error : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.InvitationCode.Error : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockingDeviceCertificateStateChange : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockingDeviceCertificateStateChange : Swift.BitwiseCopyable {}
+@available(*, unavailable, renamed: "LockingDeviceStateChange")
+extension AbloyCuBeMobileSDK.LockEvent : Swift.Sendable {}
+@available(*, unavailable, renamed: "LockingDeviceStateChange")
+extension AbloyCuBeMobileSDK.LockEvent : Swift.BitwiseCopyable {}
+@available(*, unavailable, renamed: "LockingDeviceOperationState")
+extension AbloyCuBeMobileSDK.LockOperationEvent : Swift.Sendable {}
+@available(*, unavailable, renamed: "LockingDeviceOperationState")
+extension AbloyCuBeMobileSDK.LockOperationEvent : Swift.BitwiseCopyable {}
+@available(*, unavailable)
+extension AbloyCuBeMobileSDK.LockHandleState : Swift.Sendable {}
+@available(*, unavailable)
+extension AbloyCuBeMobileSDK.LockHandleState : Swift.BitwiseCopyable {}
+@available(*, unavailable, renamed: "LockingDeviceOverrideState")
+extension AbloyCuBeMobileSDK.LockOverrideState : Swift.Sendable {}
+@available(*, unavailable, renamed: "LockingDeviceOverrideState")
+extension AbloyCuBeMobileSDK.LockOverrideState : Swift.BitwiseCopyable {}
+@available(*, unavailable, renamed: "LockingDeviceErrorState")
+extension AbloyCuBeMobileSDK.LockErrorState : Swift.Sendable {}
+@available(*, unavailable, renamed: "LockingDeviceErrorState")
+extension AbloyCuBeMobileSDK.LockErrorState : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.LockingDeviceStateChange : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.LockingDeviceOperationState : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.LockingDeviceOperationState : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockingDeviceOperationState : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.LockingDeviceOverrideState : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.LockingDeviceOverrideState : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockingDeviceOverrideState : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.LockingDeviceErrorState : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.LockingDeviceErrorState : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockingDeviceErrorState : Swift.BitwiseCopyable {}
+extension AbloyCuBeMobileSDK.LockingDeviceType : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.LockingDeviceType : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockState : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.LockState : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.LockState : Swift.RawRepresentable {}
+extension AbloyCuBeMobileSDK.LockState : Swift.BitwiseCopyable {}
+@available(*, unavailable, renamed: "OperatingDeviceActivatingFailure")
+extension AbloyCuBeMobileSDK.OperatingDeviceActivatingError : Swift.Equatable {}
+@available(*, unavailable, renamed: "OperatingDeviceActivatingFailure")
+extension AbloyCuBeMobileSDK.OperatingDeviceActivatingError : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivationStatus : Swift.Equatable {}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivationStatus : Swift.Hashable {}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivationStatus : Swift.Sendable {}
+extension AbloyCuBeMobileSDK.OperatingDeviceActivationStatus : Swift.BitwiseCopyable {}
+@available(*, unavailable, renamed: "OperatingDeviceDeactivatingFailure")
+extension AbloyCuBeMobileSDK.OperatingDeviceDeactivatingError : Swift.Equatable {}
+@available(*, unavailable, renamed: "OperatingDeviceDeactivatingFailure")
+extension AbloyCuBeMobileSDK.OperatingDeviceDeactivatingError : Swift.Hashable {}

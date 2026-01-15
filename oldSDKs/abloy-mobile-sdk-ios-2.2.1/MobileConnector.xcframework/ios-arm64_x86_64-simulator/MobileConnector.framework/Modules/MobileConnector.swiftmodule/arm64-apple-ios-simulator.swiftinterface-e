@@ -1,0 +1,2689 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name MobileConnector
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+import AnyCodable
+import Foundation
+@_exported import MobileConnector
+import MobileCoreServices
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers open class AccessesAPI {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getAccesses(clientId: Foundation.UUID? = nil) async throws -> MobileConnector.GetAccesses200Response
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getAccessesWithRequestBuilder(clientId: Foundation.UUID? = nil) -> MobileConnector.RequestBuilder<MobileConnector.GetAccesses200Response>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getLockAccesses(clientId: Foundation.UUID? = nil, nextPageToken: Swift.String? = nil) async throws -> MobileConnector.LockAccessResponse
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getLockAccessesWithRequestBuilder(clientId: Foundation.UUID? = nil, nextPageToken: Swift.String? = nil) -> MobileConnector.RequestBuilder<MobileConnector.LockAccessResponse>
+  #endif
+  @objc deinit
+}
+public struct AccessResponse : Swift.Codable, Swift.Hashable {
+  public var permissionId: Foundation.UUID
+  public var systemId: Foundation.UUID
+  public var lockId: Foundation.UUID
+  public var publicKey: Swift.String
+  public var title: Swift.String
+  public var start: Foundation.Date
+  public var end: Foundation.Date
+  public var type: MobileConnector.PermissionType
+  public var delegation: Swift.String
+  public init(permissionId: Foundation.UUID, systemId: Foundation.UUID, lockId: Foundation.UUID, publicKey: Swift.String, title: Swift.String, start: Foundation.Date, end: Foundation.Date, type: MobileConnector.PermissionType, delegation: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case permissionId
+    case systemId
+    case lockId
+    case publicKey
+    case title
+    case start
+    case end
+    case type
+    case delegation
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.AccessResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.AccessResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.AccessResponse, b: MobileConnector.AccessResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ActivateClient201Response : Swift.Codable, Swift.Hashable {
+  public var clientId: Foundation.UUID
+  public var clientAccessKey: Swift.String
+  public var systemId: Foundation.UUID
+  public var systemName: Swift.String
+  public init(clientId: Foundation.UUID, clientAccessKey: Swift.String, systemId: Foundation.UUID, systemName: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case clientId
+    case clientAccessKey
+    case systemId
+    case systemName
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.ActivateClient201Response.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.ActivateClient201Response.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.ActivateClient201Response, b: MobileConnector.ActivateClient201Response) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct APIHelper {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func rejectNil(_ source: [Swift.String : Any?]) -> [Swift.String : Any]?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func rejectNilHeaders(_ source: [Swift.String : Any?]) -> [Swift.String : Swift.String]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func convertBoolToString(_ source: [Swift.String : Any]?) -> [Swift.String : Any]?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func convertAnyToString(_ value: Any?) -> Swift.String?
+  #endif
+  public static func mapValueToPathItem(_ source: Any) -> Any
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func mapValuesToQueryItems(_ source: [Swift.String : (wrappedValue: Any?, isExplode: Swift.Bool)]) -> [Foundation.URLQueryItem]?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func mapValuesToQueryItems(_ source: [Swift.String : Any?]) -> [Foundation.URLQueryItem]?
+  #endif
+}
+@_hasMissingDesignatedInitializers open class MobileConnectorAPI {
+  public static var basePath: Swift.String
+  public static var customHeaders: [Swift.String : Swift.String]
+  public static var credential: Foundation.URLCredential?
+  public static var requestBuilderFactory: any MobileConnector.RequestBuilderFactory
+  public static var apiResponseQueue: Dispatch.DispatchQueue
+  @objc deinit
+}
+open class RequestBuilder<T> {
+  final public let parameters: [Swift.String : Any]?
+  final public let method: Swift.String
+  final public let URLString: Swift.String
+  final public let requestTask: MobileConnector.RequestTask
+  final public let requiresAuthentication: Swift.Bool
+  public var onProgressReady: ((Foundation.Progress) -> Swift.Void)?
+  #if compiler(>=5.3) && $NonescapableTypes
+  required public init(method: Swift.String, URLString: Swift.String, parameters: [Swift.String : Any]?, headers: [Swift.String : Swift.String] = [:], requiresAuthentication: Swift.Bool)
+  #endif
+  open func addHeaders(_ aHeaders: [Swift.String : Swift.String])
+  #if compiler(>=5.3) && $NonescapableTypes
+  @discardableResult
+  open func execute(_ apiResponseQueue: Dispatch.DispatchQueue = MobileConnectorAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<MobileConnector.Response<T>, MobileConnector.ErrorResponse>) -> Swift.Void) -> MobileConnector.RequestTask
+  #endif
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  @discardableResult
+  open func execute() async throws -> MobileConnector.Response<T>
+  public func addHeader(name: Swift.String, value: Swift.String) -> Self
+  open func addCredential() -> Self
+  @objc deinit
+}
+public protocol RequestBuilderFactory {
+  func getNonDecodableBuilder<T>() -> MobileConnector.RequestBuilder<T>.Type
+  func getBuilder<T>() -> MobileConnector.RequestBuilder<T>.Type where T : Swift.Decodable
+}
+public struct AuditTrailEntry : Swift.Codable, Swift.Hashable {
+  public var encoded: Swift.String
+  public var signature: Swift.String
+  public var version: Swift.Int
+  public init(encoded: Swift.String, signature: Swift.String, version: Swift.Int)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case encoded
+    case signature
+    case version
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.AuditTrailEntry.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.AuditTrailEntry.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.AuditTrailEntry, b: MobileConnector.AuditTrailEntry) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AuditTrailRequest : Swift.Codable, Swift.Hashable {
+  public var lockId: Foundation.UUID
+  public var auditTrailEntries: [MobileConnector.AuditTrailEntry]
+  public init(lockId: Foundation.UUID, auditTrailEntries: [MobileConnector.AuditTrailEntry])
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case lockId
+    case auditTrailEntries
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.AuditTrailRequest.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.AuditTrailRequest.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.AuditTrailRequest, b: MobileConnector.AuditTrailRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AuditTrailResponse : Swift.Codable, Swift.Hashable {
+  public var success: Swift.Bool
+  public init(success: Swift.Bool)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case success
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.AuditTrailResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.AuditTrailResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.AuditTrailResponse, b: MobileConnector.AuditTrailResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class AuditTrailsAPI {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func createAuditTrail(auditTrailRequest: MobileConnector.AuditTrailRequest? = nil) async throws -> MobileConnector.AuditTrailResponse
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func createAuditTrailWithRequestBuilder(auditTrailRequest: MobileConnector.AuditTrailRequest? = nil) -> MobileConnector.RequestBuilder<MobileConnector.AuditTrailResponse>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getAuditTrailSequences(clientId: Foundation.UUID? = nil) async throws -> MobileConnector.GetAuditTrailSequences200Response
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getAuditTrailSequencesWithRequestBuilder(clientId: Foundation.UUID? = nil) -> MobileConnector.RequestBuilder<MobileConnector.GetAuditTrailSequences200Response>
+  #endif
+  @objc deinit
+}
+public struct AuditTrailSequence : Swift.Codable, Swift.Hashable {
+  public var lockId: Foundation.UUID
+  public var number: Swift.Int
+  public var signature: Swift.String
+  public init(lockId: Foundation.UUID, number: Swift.Int, signature: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case lockId
+    case number
+    case signature
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.AuditTrailSequence.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.AuditTrailSequence.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.AuditTrailSequence, b: MobileConnector.AuditTrailSequence) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class CertificatesAPI {
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func createLockCertificateSigningRequest(id: Foundation.UUID, lockCertificateSigningRequestBody: MobileConnector.LockCertificateSigningRequestBody) async throws -> MobileConnector.CertificateSigningRequestResponse
+  open class func createLockCertificateSigningRequestWithRequestBuilder(id: Foundation.UUID, lockCertificateSigningRequestBody: MobileConnector.LockCertificateSigningRequestBody) -> MobileConnector.RequestBuilder<MobileConnector.CertificateSigningRequestResponse>
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getLockCertificate(id: Foundation.UUID) async throws -> MobileConnector.LockCertificateResponse
+  open class func getLockCertificateWithRequestBuilder(id: Foundation.UUID) -> MobileConnector.RequestBuilder<MobileConnector.LockCertificateResponse>
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getLockCertificates(status: [MobileConnector.LockCertificateStatus]? = nil) async throws -> MobileConnector.GetLockCertificates200Response
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getLockCertificatesWithRequestBuilder(status: [MobileConnector.LockCertificateStatus]? = nil) -> MobileConnector.RequestBuilder<MobileConnector.GetLockCertificates200Response>
+  #endif
+  @objc deinit
+}
+public struct CertificateSigningRequestResponse : Swift.Codable, Swift.Hashable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case issuing
+    case issued
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias AllCases = [MobileConnector.CertificateSigningRequestResponse.Status]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.CertificateSigningRequestResponse.Status] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var status: MobileConnector.CertificateSigningRequestResponse.Status
+  public init(status: MobileConnector.CertificateSigningRequestResponse.Status)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case status
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.CertificateSigningRequestResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.CertificateSigningRequestResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.CertificateSigningRequestResponse, b: MobileConnector.CertificateSigningRequestResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ClientActivationRequest : Swift.Codable, Swift.Hashable {
+  public var invitationCode: Swift.String
+  public var endpointId: Swift.Int
+  public var clientToken: MobileConnector.ClientActivationRequestClientToken?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(invitationCode: Swift.String, endpointId: Swift.Int, clientToken: MobileConnector.ClientActivationRequestClientToken? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case invitationCode
+    case endpointId
+    case clientToken
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.ClientActivationRequest.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.ClientActivationRequest.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.ClientActivationRequest, b: MobileConnector.ClientActivationRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ClientActivationRequestClientToken : Swift.Codable, Swift.Hashable {
+  public var applicationId: Swift.String
+  public var pushToken: Swift.String
+  public init(applicationId: Swift.String, pushToken: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case applicationId
+    case pushToken
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.ClientActivationRequestClientToken.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.ClientActivationRequestClientToken.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.ClientActivationRequestClientToken, b: MobileConnector.ClientActivationRequestClientToken) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ClientActivationStatusResponse : Swift.Codable, Swift.Hashable {
+  public enum ActivationStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case pending
+    case needsCsrParameters
+    case processingCertificate
+    case certificateReady
+    case active
+    case terminated
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias AllCases = [MobileConnector.ClientActivationStatusResponse.ActivationStatus]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.ClientActivationStatusResponse.ActivationStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var activationStatus: MobileConnector.ClientActivationStatusResponse.ActivationStatus
+  public init(activationStatus: MobileConnector.ClientActivationStatusResponse.ActivationStatus)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case activationStatus
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.ClientActivationStatusResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.ClientActivationStatusResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.ClientActivationStatusResponse, b: MobileConnector.ClientActivationStatusResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ClientPushTokenRequest : Swift.Codable, Swift.Hashable {
+  public var pushToken: Swift.String
+  public init(pushToken: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case pushToken
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.ClientPushTokenRequest.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.ClientPushTokenRequest.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.ClientPushTokenRequest, b: MobileConnector.ClientPushTokenRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class ClientsAPI {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func activateClient(clientActivationRequest: MobileConnector.ClientActivationRequest? = nil) async throws -> MobileConnector.ActivateClient201Response
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func activateClientWithRequestBuilder(clientActivationRequest: MobileConnector.ClientActivationRequest? = nil) -> MobileConnector.RequestBuilder<MobileConnector.ActivateClient201Response>
+  #endif
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func deactivateClient() async throws
+  open class func deactivateClientWithRequestBuilder() -> MobileConnector.RequestBuilder<Swift.Void>
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getActivationStatus() async throws -> MobileConnector.ClientActivationStatusResponse
+  open class func getActivationStatusWithRequestBuilder() -> MobileConnector.RequestBuilder<MobileConnector.ClientActivationStatusResponse>
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func updatePushToken(id: Foundation.UUID, clientPushTokenRequest: MobileConnector.ClientPushTokenRequest? = nil) async throws
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func updatePushTokenWithRequestBuilder(id: Foundation.UUID, clientPushTokenRequest: MobileConnector.ClientPushTokenRequest? = nil) -> MobileConnector.RequestBuilder<Swift.Void>
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class CodableHelper {
+  public static var dateFormatter: Foundation.DateFormatter {
+    get
+    set
+  }
+  public static var jsonDecoder: Foundation.JSONDecoder {
+    get
+    set
+  }
+  public static var jsonEncoder: Foundation.JSONEncoder {
+    get
+    set
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func decode<T>(_ type: T.Type, from data: Foundation.Data) -> Swift.Result<T, any Swift.Error> where T : Swift.Decodable
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func encode<T>(_ value: T) -> Swift.Result<Foundation.Data, any Swift.Error> where T : Swift.Encodable
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Configuration {
+  public static var successfulStatusCodeRange: Swift.Range<Swift.Int>
+  @objc deinit
+}
+extension Swift.String : Swift.CodingKey {
+  public var stringValue: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(stringValue: Swift.String)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var intValue: Swift.Int? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(intValue: Swift.Int)
+  #endif
+}
+extension Swift.KeyedEncodingContainerProtocol {
+  public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T : Swift.Encodable
+  #if compiler(>=5.3) && $NonescapableTypes
+  public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T : Swift.Encodable
+  #endif
+  public mutating func encodeMap<T>(_ pairs: [Self.Key : T]) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  #if compiler(>=5.3) && $NonescapableTypes
+  public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key : T]?) throws where T : Swift.Encodable, Self.Key : Swift.Hashable
+  #endif
+  public mutating func encode(_ value: Foundation.Decimal, forKey key: Self.Key) throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  public mutating func encodeIfPresent(_ value: Foundation.Decimal?, forKey key: Self.Key) throws
+  #endif
+}
+extension Swift.KeyedDecodingContainerProtocol {
+  public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T : Swift.Decodable
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T : Swift.Decodable
+  #endif
+  public func decodeMap<T>(_ type: T.Type, excludedKeys: Swift.Set<Self.Key>) throws -> [Self.Key : T] where T : Swift.Decodable, Self.Key : Swift.Hashable
+  public func decode(_ type: Foundation.Decimal.Type, forKey key: Self.Key) throws -> Foundation.Decimal
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func decodeIfPresent(_ type: Foundation.Decimal.Type, forKey key: Self.Key) throws -> Foundation.Decimal?
+  #endif
+}
+@_hasMissingDesignatedInitializers open class FirmwareAPI {
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getAvailableFirmwareVersion(hardwareVersion: Swift.String, currentFirmwareVersion: Swift.String) async throws -> MobileConnector.FirmwareVersionResponse
+  open class func getAvailableFirmwareVersionWithRequestBuilder(hardwareVersion: Swift.String, currentFirmwareVersion: Swift.String) -> MobileConnector.RequestBuilder<MobileConnector.FirmwareVersionResponse>
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getFirmware(clientId: Foundation.UUID? = nil, lockId: Foundation.UUID? = nil, hardwareVersion: Swift.String? = nil, currentFirmwareVersion: Swift.String? = nil) async throws -> MobileConnector.FirmwareResponse
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getFirmwareWithRequestBuilder(clientId: Foundation.UUID? = nil, lockId: Foundation.UUID? = nil, hardwareVersion: Swift.String? = nil, currentFirmwareVersion: Swift.String? = nil) -> MobileConnector.RequestBuilder<MobileConnector.FirmwareResponse>
+  #endif
+  @objc deinit
+}
+public struct FirmwareResponse : Swift.Codable, Swift.Hashable {
+  public var encoded: Foundation.Data
+  public var key: Swift.String
+  public var firmwareVersion: Swift.String
+  public init(encoded: Foundation.Data, key: Swift.String, firmwareVersion: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case encoded
+    case key
+    case firmwareVersion
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.FirmwareResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.FirmwareResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.FirmwareResponse, b: MobileConnector.FirmwareResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct FirmwareVersionResponse : Swift.Codable, Swift.Hashable {
+  public var firmwareVersion: Swift.String
+  public init(firmwareVersion: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case firmwareVersion
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.FirmwareVersionResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.FirmwareVersionResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.FirmwareVersionResponse, b: MobileConnector.FirmwareVersionResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct GetAccesses200Response : Swift.Codable, Swift.Hashable {
+  public var content: [MobileConnector.AccessResponse]?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(content: [MobileConnector.AccessResponse]? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case content
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.GetAccesses200Response.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.GetAccesses200Response.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.GetAccesses200Response, b: MobileConnector.GetAccesses200Response) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct GetAuditTrailSequences200Response : Swift.Codable, Swift.Hashable {
+  public var content: [MobileConnector.AuditTrailSequence]?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(content: [MobileConnector.AuditTrailSequence]? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case content
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.GetAuditTrailSequences200Response.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.GetAuditTrailSequences200Response.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.GetAuditTrailSequences200Response, b: MobileConnector.GetAuditTrailSequences200Response) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct GetLockCertificates200Response : Swift.Codable, Swift.Hashable {
+  public var content: [MobileConnector.LockCertificateResponse]
+  public init(content: [MobileConnector.LockCertificateResponse])
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case content
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.GetLockCertificates200Response.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.GetLockCertificates200Response.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.GetLockCertificates200Response, b: MobileConnector.GetLockCertificates200Response) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct GetSystems200Response : Swift.Codable, Swift.Hashable {
+  public var content: [MobileConnector.System]?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(content: [MobileConnector.System]? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case content
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.GetSystems200Response.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.GetSystems200Response.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.GetSystems200Response, b: MobileConnector.GetSystems200Response) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct JSONDataEncoding {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func encode(_ urlRequest: Foundation.URLRequest, with parameters: [Swift.String : Any]?) -> Foundation.URLRequest
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func encodingParameters(jsonData: Foundation.Data?) -> [Swift.String : Any]?
+  #endif
+}
+@_hasMissingDesignatedInitializers open class JSONEncodingHelper {
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func encodingParameters<T>(forEncodableObject encodableObj: T?) -> [Swift.String : Any]? where T : Swift.Encodable
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func encodingParameters(forEncodableObject encodableObj: Any?) -> [Swift.String : Any]?
+  #endif
+  @objc deinit
+}
+public struct Link : Swift.Codable, Swift.Hashable {
+  public var rel: Swift.String
+  public var href: Swift.String
+  public init(rel: Swift.String, href: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case rel
+    case href
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.Link.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.Link.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.Link, b: MobileConnector.Link) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockAccessResponse : Swift.Codable, Swift.Hashable {
+  public var nextPageToken: Swift.String?
+  public var items: [MobileConnector.LockAccessResponseItemsInner]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(nextPageToken: Swift.String? = nil, items: [MobileConnector.LockAccessResponseItemsInner])
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case nextPageToken
+    case items
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockAccessResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockAccessResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockAccessResponse, b: MobileConnector.LockAccessResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockAccessResponseItemsInner : Swift.Codable, Swift.Hashable {
+  public var systemId: Foundation.UUID
+  public var lockId: Foundation.UUID
+  public var lockSerialNumber: Swift.String
+  public var title: Swift.String
+  public var accesses: [MobileConnector.LockAccessResponseItemsInnerAccessesInner]
+  public init(systemId: Foundation.UUID, lockId: Foundation.UUID, lockSerialNumber: Swift.String, title: Swift.String, accesses: [MobileConnector.LockAccessResponseItemsInnerAccessesInner])
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case systemId
+    case lockId
+    case lockSerialNumber
+    case title
+    case accesses
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockAccessResponseItemsInner.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockAccessResponseItemsInner.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockAccessResponseItemsInner, b: MobileConnector.LockAccessResponseItemsInner) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockAccessResponseItemsInnerAccessesInner : Swift.Codable, Swift.Hashable {
+  public var publicKey: Swift.String
+  public var permissions: [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner]
+  public init(publicKey: Swift.String, permissions: [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner])
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case publicKey
+    case permissions
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockAccessResponseItemsInnerAccessesInner.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockAccessResponseItemsInnerAccessesInner.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockAccessResponseItemsInnerAccessesInner, b: MobileConnector.LockAccessResponseItemsInnerAccessesInner) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockAccessResponseItemsInnerAccessesInnerPermissionsInner : Swift.Codable, Swift.Hashable {
+  public var permissionId: Foundation.UUID
+  public var type: MobileConnector.PermissionType
+  public var delegation: Swift.String
+  public var validities: [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner]
+  public init(permissionId: Foundation.UUID, type: MobileConnector.PermissionType, delegation: Swift.String, validities: [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner])
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case permissionId
+    case type
+    case delegation
+    case validities
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner, b: MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner : Swift.Codable, Swift.Hashable {
+  public var start: Foundation.Date
+  public var end: Foundation.Date
+  public init(start: Foundation.Date, end: Foundation.Date)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case start
+    case end
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner, b: MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockBySerialNumber : Swift.Codable, Swift.Hashable {
+  public enum ProductType : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case padlock
+    case controller
+    case keyDeposit
+    case swingHandle
+    case unknown
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias AllCases = [MobileConnector.LockBySerialNumber.ProductType]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockBySerialNumber.ProductType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var productType: MobileConnector.LockBySerialNumber.ProductType
+  public var manufacturingYear: Swift.Int
+  public var manufacturingQuarter: Swift.Int
+  public var claimed: Swift.Bool
+  public var belongsToSameSystem: Swift.Bool?
+  public var lockingDeviceId: Foundation.UUID?
+  public var name: Swift.String?
+  public var firmwareUpdateAvailable: Swift.Bool?
+  public var certificateExpirationDatetime: Foundation.Date?
+  public var reKeyPossible: Swift.Bool?
+  public var firmwareVersion: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(productType: MobileConnector.LockBySerialNumber.ProductType, manufacturingYear: Swift.Int, manufacturingQuarter: Swift.Int, claimed: Swift.Bool, belongsToSameSystem: Swift.Bool? = nil, lockingDeviceId: Foundation.UUID? = nil, name: Swift.String? = nil, firmwareUpdateAvailable: Swift.Bool? = nil, certificateExpirationDatetime: Foundation.Date? = nil, reKeyPossible: Swift.Bool? = nil, firmwareVersion: Swift.String? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case productType
+    case manufacturingYear
+    case manufacturingQuarter
+    case claimed
+    case belongsToSameSystem
+    case lockingDeviceId
+    case name
+    case firmwareUpdateAvailable
+    case certificateExpirationDatetime
+    case reKeyPossible
+    case firmwareVersion
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockBySerialNumber.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockBySerialNumber.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockBySerialNumber, b: MobileConnector.LockBySerialNumber) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockCertificateDelegation : Swift.Codable, Swift.Hashable {
+  public var basePermissionId: Foundation.UUID
+  public var start: Foundation.Date
+  public var end: Foundation.Date
+  public var delegation: Swift.String
+  public init(basePermissionId: Foundation.UUID, start: Foundation.Date, end: Foundation.Date, delegation: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case basePermissionId
+    case start
+    case end
+    case delegation
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockCertificateDelegation.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockCertificateDelegation.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockCertificateDelegation, b: MobileConnector.LockCertificateDelegation) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockCertificateResponse : Swift.Codable, Swift.Hashable {
+  public enum Profile : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case manufacturing
+    case operational
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias AllCases = [MobileConnector.LockCertificateResponse.Profile]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockCertificateResponse.Profile] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var id: Foundation.UUID
+  public var systemId: Foundation.UUID
+  public var lockId: Foundation.UUID
+  public var profile: MobileConnector.LockCertificateResponse.Profile
+  public var status: MobileConnector.LockCertificateStatus
+  public var certificateRequestDetails: Swift.String?
+  public var certificate: Swift.String?
+  public var serialNumber: Swift.String?
+  public var signature: Swift.String?
+  public var matchingCurrentCertificateSerialNumber: Swift.String?
+  public var delegations: [MobileConnector.LockCertificateDelegation]?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(id: Foundation.UUID, systemId: Foundation.UUID, lockId: Foundation.UUID, profile: MobileConnector.LockCertificateResponse.Profile, status: MobileConnector.LockCertificateStatus, certificateRequestDetails: Swift.String? = nil, certificate: Swift.String? = nil, serialNumber: Swift.String? = nil, signature: Swift.String? = nil, matchingCurrentCertificateSerialNumber: Swift.String? = nil, delegations: [MobileConnector.LockCertificateDelegation]? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case systemId
+    case lockId
+    case profile
+    case status
+    case certificateRequestDetails
+    case certificate
+    case serialNumber
+    case signature
+    case matchingCurrentCertificateSerialNumber
+    case delegations
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockCertificateResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockCertificateResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.LockCertificateResponse, b: MobileConnector.LockCertificateResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LockCertificateSigningRequestBody : Swift.Codable, Swift.Hashable {
+  public var certificateSigningRequest: Swift.String
+  public var signature: Swift.String
+  public init(certificateSigningRequest: Swift.String, signature: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case certificateSigningRequest
+    case signature
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockCertificateSigningRequestBody.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockCertificateSigningRequestBody.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockCertificateSigningRequestBody, b: MobileConnector.LockCertificateSigningRequestBody) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum LockCertificateStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case awaitingCsr
+  case issuing
+  case issued
+  case current
+  case previous
+  case revoked
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [MobileConnector.LockCertificateStatus]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [MobileConnector.LockCertificateStatus] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct LockCollection : Swift.Codable, Swift.Hashable {
+  public var content: [MobileConnector.LockResponse]
+  public var page: MobileConnector.Page
+  public var links: [MobileConnector.Link]
+  public init(content: [MobileConnector.LockResponse], page: MobileConnector.Page, links: [MobileConnector.Link])
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case content
+    case page
+    case links
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockCollection.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockCollection.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockCollection, b: MobileConnector.LockCollection) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockingDeviceCertificate : Swift.Codable, Swift.Hashable {
+  public var eligibleForReKeying: Swift.Bool
+  public var expirationDatetime: Foundation.Date
+  public var revoked: Swift.Bool
+  public init(eligibleForReKeying: Swift.Bool, expirationDatetime: Foundation.Date, revoked: Swift.Bool)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case eligibleForReKeying
+    case expirationDatetime
+    case revoked
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockingDeviceCertificate.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockingDeviceCertificate.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockingDeviceCertificate, b: MobileConnector.LockingDeviceCertificate) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockingDeviceResponseItem : Swift.Codable, Swift.Hashable {
+  public var id: Foundation.UUID
+  public var name: Swift.String
+  public var lockingDeviceSerialNumber: Swift.String
+  public var operationalCertificate: MobileConnector.LockingDeviceCertificate
+  public var manufacturingCertificate: MobileConnector.LockingDeviceCertificate
+  public init(id: Foundation.UUID, name: Swift.String, lockingDeviceSerialNumber: Swift.String, operationalCertificate: MobileConnector.LockingDeviceCertificate, manufacturingCertificate: MobileConnector.LockingDeviceCertificate)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case name
+    case lockingDeviceSerialNumber
+    case operationalCertificate
+    case manufacturingCertificate
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockingDeviceResponseItem.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockingDeviceResponseItem.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockingDeviceResponseItem, b: MobileConnector.LockingDeviceResponseItem) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockRegistrationRequest : Swift.Codable, Swift.Hashable {
+  public var manufacturingCertificate: Swift.String
+  public var operationalCertificate: Swift.String
+  @available(*, deprecated, message: "This property is deprecated.")
+  public var userId: Foundation.UUID?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(manufacturingCertificate: Swift.String, operationalCertificate: Swift.String, userId: Foundation.UUID? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case manufacturingCertificate
+    case operationalCertificate
+    case userId
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockRegistrationRequest.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockRegistrationRequest.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockRegistrationRequest, b: MobileConnector.LockRegistrationRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockRegistrationResponse : Swift.Codable, Swift.Hashable {
+  public var lockId: Foundation.UUID
+  public var permissionId: Foundation.UUID
+  public var systemId: Foundation.UUID
+  public var start: Foundation.Date
+  public var end: Foundation.Date
+  public var publicKey: Swift.String
+  public var delegation: Swift.String
+  public var type: MobileConnector.PermissionType
+  public var title: Swift.String
+  public init(lockId: Foundation.UUID, permissionId: Foundation.UUID, systemId: Foundation.UUID, start: Foundation.Date, end: Foundation.Date, publicKey: Swift.String, delegation: Swift.String, type: MobileConnector.PermissionType, title: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case lockId
+    case permissionId
+    case systemId
+    case start
+    case end
+    case publicKey
+    case delegation
+    case type
+    case title
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockRegistrationResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockRegistrationResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.LockRegistrationResponse, b: MobileConnector.LockRegistrationResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LockResponse : Swift.Codable, Swift.Hashable {
+  public var id: Foundation.UUID
+  public var name: Swift.String
+  public var lockingDeviceSerialNumber: Swift.String?
+  public var operationalCertificate: MobileConnector.LockingDeviceCertificate?
+  public var manufacturingCertificate: MobileConnector.LockingDeviceCertificate?
+  public var links: [MobileConnector.Link]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(id: Foundation.UUID, name: Swift.String, lockingDeviceSerialNumber: Swift.String? = nil, operationalCertificate: MobileConnector.LockingDeviceCertificate? = nil, manufacturingCertificate: MobileConnector.LockingDeviceCertificate? = nil, links: [MobileConnector.Link])
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case name
+    case lockingDeviceSerialNumber
+    case operationalCertificate
+    case manufacturingCertificate
+    case links
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockResponse, b: MobileConnector.LockResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class LocksAPI {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func createUpdateTime(id: Foundation.UUID, lockId: Foundation.UUID, lockTimeRequest: MobileConnector.LockTimeRequest? = nil) async throws -> MobileConnector.LockTimeResponse
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func createUpdateTimeWithRequestBuilder(id: Foundation.UUID, lockId: Foundation.UUID, lockTimeRequest: MobileConnector.LockTimeRequest? = nil) -> MobileConnector.RequestBuilder<MobileConnector.LockTimeResponse>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getLockingDevices(lockingDeviceSerialNumber: Swift.String? = nil, operationalPublicKey: Swift.String? = nil, nextPageToken: Swift.String? = nil, limit: Swift.Int? = nil) async throws -> MobileConnector.PaginatedLockingDevices
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getLockingDevicesWithRequestBuilder(lockingDeviceSerialNumber: Swift.String? = nil, operationalPublicKey: Swift.String? = nil, nextPageToken: Swift.String? = nil, limit: Swift.Int? = nil) -> MobileConnector.RequestBuilder<MobileConnector.PaginatedLockingDevices>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  @available(*, deprecated, message: "This operation is deprecated.")
+  open class func getLocks(id: Foundation.UUID, claimed: Swift.Bool, lockingDeviceSerialNumber: Swift.String? = nil, operationalPublicKey: Swift.String? = nil, page: Swift.Int? = nil, size: Swift.Int? = nil, sort: Swift.String? = nil) async throws -> MobileConnector.LockCollection
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, deprecated, message: "This operation is deprecated.")
+  open class func getLocksWithRequestBuilder(id: Foundation.UUID, claimed: Swift.Bool, lockingDeviceSerialNumber: Swift.String? = nil, operationalPublicKey: Swift.String? = nil, page: Swift.Int? = nil, size: Swift.Int? = nil, sort: Swift.String? = nil) -> MobileConnector.RequestBuilder<MobileConnector.LockCollection>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getUnclaimedLockingDevices(nextPageToken: Swift.String? = nil, limit: Swift.Int? = nil) async throws -> MobileConnector.PaginatedUnclaimedLockingDevices
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func getUnclaimedLockingDevicesWithRequestBuilder(nextPageToken: Swift.String? = nil, limit: Swift.Int? = nil) -> MobileConnector.RequestBuilder<MobileConnector.PaginatedUnclaimedLockingDevices>
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func registerLock(id: Foundation.UUID, lockId: Foundation.UUID, lockRegistrationRequest: MobileConnector.LockRegistrationRequest? = nil) async throws -> MobileConnector.LockRegistrationResponse
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func registerLockWithRequestBuilder(id: Foundation.UUID, lockId: Foundation.UUID, lockRegistrationRequest: MobileConnector.LockRegistrationRequest? = nil) -> MobileConnector.RequestBuilder<MobileConnector.LockRegistrationResponse>
+  #endif
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func tempGetLockingDeviceBySerialNumber(lockingDeviceSerialNumber: Swift.String) async throws -> MobileConnector.LockBySerialNumber
+  open class func tempGetLockingDeviceBySerialNumberWithRequestBuilder(lockingDeviceSerialNumber: Swift.String) -> MobileConnector.RequestBuilder<MobileConnector.LockBySerialNumber>
+  @objc deinit
+}
+public struct LockTimeRequest : Swift.Codable, Swift.Hashable {
+  @available(*, deprecated, message: "This property is deprecated.")
+  public var deviceId: Foundation.UUID?
+  public var lockTime: Swift.Int64
+  public var lockTimeSignature: Foundation.Data
+  public var certificateSerialNumber: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(deviceId: Foundation.UUID? = nil, lockTime: Swift.Int64, lockTimeSignature: Foundation.Data, certificateSerialNumber: Swift.String? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case deviceId
+    case lockTime
+    case lockTimeSignature
+    case certificateSerialNumber
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockTimeRequest.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockTimeRequest.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockTimeRequest, b: MobileConnector.LockTimeRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LockTimeResponse : Swift.Codable, Swift.Hashable {
+  public var time: Swift.Int64?
+  public var signature: Foundation.Data?
+  public var delegation: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(time: Swift.Int64? = nil, signature: Foundation.Data? = nil, delegation: Swift.String? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case time
+    case signature
+    case delegation
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LockTimeResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LockTimeResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LockTimeResponse, b: MobileConnector.LockTimeResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class LoginAPI {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func login(loginRequest: MobileConnector.LoginRequest? = nil) async throws -> MobileConnector.LoginResponse
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  open class func loginWithRequestBuilder(loginRequest: MobileConnector.LoginRequest? = nil) -> MobileConnector.RequestBuilder<MobileConnector.LoginResponse>
+  #endif
+  @objc deinit
+}
+public struct LoginRequest : Swift.Codable, Swift.Hashable {
+  public var accessKey: Swift.String
+  public var userId: Foundation.UUID
+  public init(accessKey: Swift.String, userId: Foundation.UUID)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case accessKey
+    case userId
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LoginRequest.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LoginRequest.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LoginRequest, b: MobileConnector.LoginRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LoginResponse : Swift.Codable, Swift.Hashable {
+  public var token: Swift.String
+  public init(token: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case token
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.LoginResponse.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.LoginResponse.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.LoginResponse, b: MobileConnector.LoginResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum NullEncodable<Wrapped> : Swift.Hashable where Wrapped : Swift.Hashable {
+  case encodeNothing
+  case encodeNull
+  case encodeValue(Wrapped)
+  public static func == (a: MobileConnector.NullEncodable<Wrapped>, b: MobileConnector.NullEncodable<Wrapped>) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension MobileConnector.NullEncodable : Swift.Codable where Wrapped : Swift.Decodable, Wrapped : Swift.Encodable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum ErrorResponse : Swift.Error {
+  case error(Swift.Int, Foundation.Data?, Foundation.URLResponse?, any Swift.Error)
+}
+public enum DownloadException : Swift.Error {
+  case responseDataMissing
+  case responseFailed
+  case requestMissing
+  case requestMissingPath
+  case requestMissingURL
+  public static func == (a: MobileConnector.DownloadException, b: MobileConnector.DownloadException) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum DecodableRequestBuilderError : Swift.Error {
+  case emptyDataResponse
+  case nilHTTPResponse
+  case unsuccessfulHTTPStatusCode
+  case jsonDecoding(Swift.DecodingError)
+  case generalError(any Swift.Error)
+}
+open class Response<T> {
+  final public let statusCode: Swift.Int
+  final public let header: [Swift.String : Swift.String]
+  final public let body: T
+  final public let bodyData: Foundation.Data?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(statusCode: Swift.Int, header: [Swift.String : Swift.String], body: T, bodyData: Foundation.Data?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  convenience public init(response: Foundation.HTTPURLResponse, body: T, bodyData: Foundation.Data?)
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class RequestTask : @unchecked Swift.Sendable {
+  final public func cancel()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OpenISO8601DateFormatter : Foundation.DateFormatter {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc override dynamic public func date(from string: Swift.String) -> Foundation.Date?
+  #endif
+  @objc deinit
+}
+public struct Page : Swift.Codable, Swift.Hashable {
+  public var size: Swift.Int
+  public var totalElements: Swift.Int
+  public var totalPages: Swift.Int
+  public var number: Swift.Int
+  public init(size: Swift.Int, totalElements: Swift.Int, totalPages: Swift.Int, number: Swift.Int)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case size
+    case totalElements
+    case totalPages
+    case number
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.Page.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.Page.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.Page, b: MobileConnector.Page) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PaginatedLockingDevices : Swift.Codable, Swift.Hashable {
+  public var nextPageToken: Swift.String?
+  public var items: [MobileConnector.LockingDeviceResponseItem]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(nextPageToken: Swift.String? = nil, items: [MobileConnector.LockingDeviceResponseItem])
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case nextPageToken
+    case items
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.PaginatedLockingDevices.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.PaginatedLockingDevices.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.PaginatedLockingDevices, b: MobileConnector.PaginatedLockingDevices) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PaginatedUnclaimedLockingDevices : Swift.Codable, Swift.Hashable {
+  public var nextPageToken: Swift.String?
+  public var items: [MobileConnector.UnclaimedLockingDeviceResponseItem]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(nextPageToken: Swift.String? = nil, items: [MobileConnector.UnclaimedLockingDeviceResponseItem])
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case nextPageToken
+    case items
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.PaginatedUnclaimedLockingDevices.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.PaginatedUnclaimedLockingDevices.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.PaginatedUnclaimedLockingDevices, b: MobileConnector.PaginatedUnclaimedLockingDevices) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum PermissionType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case _open
+  case updateFirmware
+  case updateTime
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [MobileConnector.PermissionType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [MobileConnector.PermissionType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class PrivacyPolicyAPI {
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func deletePrivacyPolicyConsent(privacyPolicyVersion: Swift.Int) async throws
+  open class func deletePrivacyPolicyConsentWithRequestBuilder(privacyPolicyVersion: Swift.Int) -> MobileConnector.RequestBuilder<Swift.Void>
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getPrivacyPolicyConsent(privacyPolicyVersion: Swift.Int) async throws
+  open class func getPrivacyPolicyConsentWithRequestBuilder(privacyPolicyVersion: Swift.Int) -> MobileConnector.RequestBuilder<Swift.Void>
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func postPrivacyPolicyConsent(privacyPolicyVersion: Swift.Int) async throws
+  open class func postPrivacyPolicyConsentWithRequestBuilder(privacyPolicyVersion: Swift.Int) -> MobileConnector.RequestBuilder<Swift.Void>
+  @objc deinit
+}
+public struct Problem : Swift.Codable, Swift.Hashable {
+  public var type: Swift.String?
+  public var title: Swift.String?
+  public var status: Swift.Int?
+  public var detail: Swift.String?
+  public var instance: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(type: Swift.String? = "about:blank", title: Swift.String? = nil, status: Swift.Int? = nil, detail: Swift.String? = nil, instance: Swift.String? = nil)
+  #endif
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case type
+    case title
+    case status
+    case detail
+    case instance
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.Problem.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.Problem.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.Problem, b: MobileConnector.Problem) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct System : Swift.Codable, Swift.Hashable {
+  public var id: Foundation.UUID
+  public var name: Swift.String
+  public var publicKey: Swift.String
+  public init(id: Foundation.UUID, name: Swift.String, publicKey: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case name
+    case publicKey
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.System.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.System.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var additionalProperties: [Swift.String : AnyCodable.AnyCodable]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public subscript(key: Swift.String) -> AnyCodable.AnyCodable? {
+    get
+    set
+  }
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public static func == (a: MobileConnector.System, b: MobileConnector.System) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class SystemsAPI {
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  open class func getSystems() async throws -> MobileConnector.GetSystems200Response
+  open class func getSystemsWithRequestBuilder() -> MobileConnector.RequestBuilder<MobileConnector.GetSystems200Response>
+  @objc deinit
+}
+public struct UnclaimedLockingDeviceResponseItem : Swift.Codable, Swift.Hashable {
+  public var id: Foundation.UUID
+  public var name: Swift.String
+  public init(id: Foundation.UUID, name: Swift.String)
+  public enum CodingKeys : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+    case id
+    case name
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(stringValue: Swift.String)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(intValue: Swift.Int)
+    #endif
+    public typealias AllCases = [MobileConnector.UnclaimedLockingDeviceResponseItem.CodingKeys]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [MobileConnector.UnclaimedLockingDeviceResponseItem.CodingKeys] {
+      get
+    }
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var intValue: Swift.Int? {
+      get
+    }
+    #endif
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: MobileConnector.UnclaimedLockingDeviceResponseItem, b: MobileConnector.UnclaimedLockingDeviceResponseItem) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol URLSessionProtocol {
+  #if compiler(>=5.3) && $NonescapableTypes
+  func dataTask(with request: Foundation.URLRequest, completionHandler: @escaping @Sendable (Foundation.Data?, Foundation.URLResponse?, (any Swift.Error)?) -> Swift.Void) -> Foundation.URLSessionDataTask
+  #endif
+}
+extension Foundation.URLSession : MobileConnector.URLSessionProtocol {
+}
+public typealias MobileConnectorAPIChallengeHandler = (Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLAuthenticationChallenge) -> (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?)
+@_inheritsConvenienceInitializers open class URLSessionRequestBuilder<T> : MobileConnector.RequestBuilder<T> {
+  public var taskDidReceiveChallenge: MobileConnector.MobileConnectorAPIChallengeHandler?
+  #if compiler(>=5.3) && $NonescapableTypes
+  required public init(method: Swift.String, URLString: Swift.String, parameters: [Swift.String : Any]?, headers: [Swift.String : Swift.String] = [:], requiresAuthentication: Swift.Bool)
+  #endif
+  open func createURLSession() -> any MobileConnector.URLSessionProtocol
+  #if compiler(>=5.3) && $NonescapableTypes
+  open func contentTypeForFormPart(fileURL: Foundation.URL) -> Swift.String?
+  #endif
+  open func createURLRequest(urlSession: any MobileConnector.URLSessionProtocol, method: MobileConnector.HTTPMethod, encoding: any MobileConnector.ParameterEncoding, headers: [Swift.String : Swift.String]) throws -> Foundation.URLRequest
+  #if compiler(>=5.3) && $NonescapableTypes
+  @discardableResult
+  override open func execute(_ apiResponseQueue: Dispatch.DispatchQueue = MobileConnectorAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<MobileConnector.Response<T>, MobileConnector.ErrorResponse>) -> Swift.Void) -> MobileConnector.RequestTask
+  #endif
+  open func buildHeaders() -> [Swift.String : Swift.String]
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class URLSessionDecodableRequestBuilder<T> : MobileConnector.URLSessionRequestBuilder<T> where T : Swift.Decodable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  required public init(method: Swift.String, URLString: Swift.String, parameters: [Swift.String : Any]?, headers: [Swift.String : Swift.String] = super, requiresAuthentication: Swift.Bool)
+  #endif
+  @objc deinit
+}
+public enum HTTPMethod : Swift.String {
+  case options
+  case get
+  case head
+  case post
+  case put
+  case patch
+  case delete
+  case trace
+  case connect
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol ParameterEncoding {
+  #if compiler(>=5.3) && $NonescapableTypes
+  func encode(_ urlRequest: Foundation.URLRequest, with parameters: [Swift.String : Any]?) throws -> Foundation.URLRequest
+  #endif
+}
+extension MobileConnector.JSONDataEncoding : MobileConnector.ParameterEncoding {
+}
+public struct StringRule {
+  public var minLength: Swift.Int?
+  public var maxLength: Swift.Int?
+  public var pattern: Swift.String?
+}
+public struct NumericRule<T> where T : Swift.Comparable, T : Swift.Numeric {
+  public var minimum: T?
+  public var exclusiveMinimum: Swift.Bool
+  public var maximum: T?
+  public var exclusiveMaximum: Swift.Bool
+  public var multipleOf: T?
+}
+public enum StringValidationErrorKind : Swift.Error {
+  case minLength, maxLength, pattern
+  public static func == (a: MobileConnector.StringValidationErrorKind, b: MobileConnector.StringValidationErrorKind) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum NumericValidationErrorKind : Swift.Error {
+  case minimum, maximum, multipleOf
+  public static func == (a: MobileConnector.NumericValidationErrorKind, b: MobileConnector.NumericValidationErrorKind) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ValidationError<T> : Swift.Error where T : Swift.Error, T : Swift.Hashable {
+  public var kinds: Swift.Set<T> {
+    get
+  }
+}
+public struct Validator {
+  public static func validate(_ string: Swift.String, against rule: MobileConnector.StringRule) throws -> Swift.String
+  public static func validate<T>(_ numeric: T, against rule: MobileConnector.NumericRule<T>) throws -> T where T : Swift.BinaryInteger
+  public static func validate<T>(_ numeric: T, against rule: MobileConnector.NumericRule<T>) throws -> T where T : Swift.FloatingPoint
+}
+extension MobileConnector.AccessResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.AccessResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.AccessResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.ActivateClient201Response.CodingKeys : Swift.Equatable {}
+extension MobileConnector.ActivateClient201Response.CodingKeys : Swift.Hashable {}
+extension MobileConnector.ActivateClient201Response.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.AuditTrailEntry.CodingKeys : Swift.Equatable {}
+extension MobileConnector.AuditTrailEntry.CodingKeys : Swift.Hashable {}
+extension MobileConnector.AuditTrailEntry.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.AuditTrailRequest.CodingKeys : Swift.Equatable {}
+extension MobileConnector.AuditTrailRequest.CodingKeys : Swift.Hashable {}
+extension MobileConnector.AuditTrailRequest.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.AuditTrailResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.AuditTrailResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.AuditTrailResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.AuditTrailSequence.CodingKeys : Swift.Equatable {}
+extension MobileConnector.AuditTrailSequence.CodingKeys : Swift.Hashable {}
+extension MobileConnector.AuditTrailSequence.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.CertificateSigningRequestResponse.Status : Swift.Equatable {}
+extension MobileConnector.CertificateSigningRequestResponse.Status : Swift.Hashable {}
+extension MobileConnector.CertificateSigningRequestResponse.Status : Swift.RawRepresentable {}
+extension MobileConnector.CertificateSigningRequestResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.CertificateSigningRequestResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.CertificateSigningRequestResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.ClientActivationRequest.CodingKeys : Swift.Equatable {}
+extension MobileConnector.ClientActivationRequest.CodingKeys : Swift.Hashable {}
+extension MobileConnector.ClientActivationRequest.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.ClientActivationRequestClientToken.CodingKeys : Swift.Equatable {}
+extension MobileConnector.ClientActivationRequestClientToken.CodingKeys : Swift.Hashable {}
+extension MobileConnector.ClientActivationRequestClientToken.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.ClientActivationStatusResponse.ActivationStatus : Swift.Equatable {}
+extension MobileConnector.ClientActivationStatusResponse.ActivationStatus : Swift.Hashable {}
+extension MobileConnector.ClientActivationStatusResponse.ActivationStatus : Swift.RawRepresentable {}
+extension MobileConnector.ClientActivationStatusResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.ClientActivationStatusResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.ClientActivationStatusResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.ClientPushTokenRequest.CodingKeys : Swift.Equatable {}
+extension MobileConnector.ClientPushTokenRequest.CodingKeys : Swift.Hashable {}
+extension MobileConnector.ClientPushTokenRequest.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.FirmwareResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.FirmwareResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.FirmwareResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.FirmwareVersionResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.FirmwareVersionResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.FirmwareVersionResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.GetAccesses200Response.CodingKeys : Swift.Equatable {}
+extension MobileConnector.GetAccesses200Response.CodingKeys : Swift.Hashable {}
+extension MobileConnector.GetAccesses200Response.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.GetAuditTrailSequences200Response.CodingKeys : Swift.Equatable {}
+extension MobileConnector.GetAuditTrailSequences200Response.CodingKeys : Swift.Hashable {}
+extension MobileConnector.GetAuditTrailSequences200Response.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.GetLockCertificates200Response.CodingKeys : Swift.Equatable {}
+extension MobileConnector.GetLockCertificates200Response.CodingKeys : Swift.Hashable {}
+extension MobileConnector.GetLockCertificates200Response.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.GetSystems200Response.CodingKeys : Swift.Equatable {}
+extension MobileConnector.GetSystems200Response.CodingKeys : Swift.Hashable {}
+extension MobileConnector.GetSystems200Response.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.Link.CodingKeys : Swift.Equatable {}
+extension MobileConnector.Link.CodingKeys : Swift.Hashable {}
+extension MobileConnector.Link.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockAccessResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockAccessResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockAccessResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockAccessResponseItemsInner.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockAccessResponseItemsInner.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockAccessResponseItemsInner.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInner.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInner.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInner.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInner.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockAccessResponseItemsInnerAccessesInnerPermissionsInnerValiditiesInner.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockBySerialNumber.ProductType : Swift.Equatable {}
+extension MobileConnector.LockBySerialNumber.ProductType : Swift.Hashable {}
+extension MobileConnector.LockBySerialNumber.ProductType : Swift.RawRepresentable {}
+extension MobileConnector.LockBySerialNumber.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockBySerialNumber.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockBySerialNumber.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockCertificateDelegation.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockCertificateDelegation.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockCertificateDelegation.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockCertificateResponse.Profile : Swift.Equatable {}
+extension MobileConnector.LockCertificateResponse.Profile : Swift.Hashable {}
+extension MobileConnector.LockCertificateResponse.Profile : Swift.RawRepresentable {}
+extension MobileConnector.LockCertificateResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockCertificateResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockCertificateResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockCertificateSigningRequestBody.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockCertificateSigningRequestBody.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockCertificateSigningRequestBody.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockCertificateStatus : Swift.Equatable {}
+extension MobileConnector.LockCertificateStatus : Swift.Hashable {}
+extension MobileConnector.LockCertificateStatus : Swift.RawRepresentable {}
+extension MobileConnector.LockCollection.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockCollection.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockCollection.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockingDeviceCertificate.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockingDeviceCertificate.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockingDeviceCertificate.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockingDeviceResponseItem.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockingDeviceResponseItem.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockingDeviceResponseItem.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockRegistrationRequest.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockRegistrationRequest.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockRegistrationRequest.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockRegistrationResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockRegistrationResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockRegistrationResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockTimeRequest.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockTimeRequest.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockTimeRequest.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LockTimeResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LockTimeResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LockTimeResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LoginRequest.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LoginRequest.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LoginRequest.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.LoginResponse.CodingKeys : Swift.Equatable {}
+extension MobileConnector.LoginResponse.CodingKeys : Swift.Hashable {}
+extension MobileConnector.LoginResponse.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.DownloadException : Swift.Equatable {}
+extension MobileConnector.DownloadException : Swift.Hashable {}
+extension MobileConnector.Page.CodingKeys : Swift.Equatable {}
+extension MobileConnector.Page.CodingKeys : Swift.Hashable {}
+extension MobileConnector.Page.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.PaginatedLockingDevices.CodingKeys : Swift.Equatable {}
+extension MobileConnector.PaginatedLockingDevices.CodingKeys : Swift.Hashable {}
+extension MobileConnector.PaginatedLockingDevices.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.PaginatedUnclaimedLockingDevices.CodingKeys : Swift.Equatable {}
+extension MobileConnector.PaginatedUnclaimedLockingDevices.CodingKeys : Swift.Hashable {}
+extension MobileConnector.PaginatedUnclaimedLockingDevices.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.PermissionType : Swift.Equatable {}
+extension MobileConnector.PermissionType : Swift.Hashable {}
+extension MobileConnector.PermissionType : Swift.RawRepresentable {}
+extension MobileConnector.Problem.CodingKeys : Swift.Equatable {}
+extension MobileConnector.Problem.CodingKeys : Swift.Hashable {}
+extension MobileConnector.Problem.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.System.CodingKeys : Swift.Equatable {}
+extension MobileConnector.System.CodingKeys : Swift.Hashable {}
+extension MobileConnector.System.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.UnclaimedLockingDeviceResponseItem.CodingKeys : Swift.Equatable {}
+extension MobileConnector.UnclaimedLockingDeviceResponseItem.CodingKeys : Swift.Hashable {}
+extension MobileConnector.UnclaimedLockingDeviceResponseItem.CodingKeys : Swift.RawRepresentable {}
+extension MobileConnector.HTTPMethod : Swift.Equatable {}
+extension MobileConnector.HTTPMethod : Swift.Hashable {}
+extension MobileConnector.HTTPMethod : Swift.RawRepresentable {}
+extension MobileConnector.StringValidationErrorKind : Swift.Equatable {}
+extension MobileConnector.StringValidationErrorKind : Swift.Hashable {}
+extension MobileConnector.NumericValidationErrorKind : Swift.Equatable {}
+extension MobileConnector.NumericValidationErrorKind : Swift.Hashable {}

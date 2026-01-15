@@ -1,0 +1,11 @@
+framework module AbloyCuBeMobileSDK {
+  umbrella header "AbloyCuBeMobileSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module AbloyCuBeMobileSDK.Swift {
+  header "AbloyCuBeMobileSDK-Swift.h"
+  requires objc
+}
